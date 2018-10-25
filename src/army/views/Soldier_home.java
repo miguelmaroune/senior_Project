@@ -163,7 +163,7 @@ new Request_meeting().setVisible(true);
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
                                         
-new Check_meetings_history().setVisible(true);                                             
+new Check_meetings_history().setVisible(true);                                           
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed

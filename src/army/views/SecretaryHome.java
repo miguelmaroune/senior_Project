@@ -142,11 +142,6 @@ public class SecretaryHome extends javax.swing.JFrame {
 
         meeting.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         meeting.setText("Manage meetings");
-        meeting.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                meetingActionPerformed(evt);
-            }
-        });
 
         jMenuItem1.setText("Request Meeting");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +153,11 @@ public class SecretaryHome extends javax.swing.JFrame {
         jMenuItem1.getAccessibleContext().setAccessibleDescription("");
 
         jMenuItem4.setText("Meetings History and Results");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         meeting.add(jMenuItem4);
         meeting.add(jSeparator1);
 
@@ -184,6 +184,11 @@ public class SecretaryHome extends javax.swing.JFrame {
         jMenu1.setText("Check tasks and workdays");
 
         jMenuItem5.setText("Check calendar and tasks");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
@@ -226,29 +231,29 @@ public class SecretaryHome extends javax.swing.JFrame {
         setBounds(0, 0, 716, 411);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void meetingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetingActionPerformed
-      
-    }//GEN-LAST:event_meetingActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        
+   new Request_meeting().setVisible(true);        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        
-        new CalendarPanelTest().setVisible(true);
-        
-        
-        
+new View_profile().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+new Check_meetings_history().setVisible(true); 
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+ new CalendarPanelTest().setVisible(true);      
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     
     
   
-//    public static void main(String args[]) {
+   public static void main(String args[]) {
      
-//   new SoldierHome().setVisible(true);
-//            }
+  new SecretaryHome().setVisible(true);
+            }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;

@@ -68,6 +68,7 @@ public class Cl_homepage extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -187,6 +188,9 @@ public class Cl_homepage extends javax.swing.JFrame {
         jMenuItem14.setText("Manage workdays");
         jMenu1.add(jMenuItem14);
 
+        jMenuItem18.setText("Check workdays and tasks");
+        jMenu1.add(jMenuItem18);
+
         jMenuBar1.add(jMenu1);
 
         jMenu4.setText("Query");
@@ -273,10 +277,10 @@ public class Cl_homepage extends javax.swing.JFrame {
     
     
   
-//    public static void main(String args[]) {
+    public static void main(String args[]) {
      
-//   new SoldierHome().setVisible(true);
-//            }
+   new Cl_homepage().setVisible(true);
+           }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -298,6 +302,7 @@ public class Cl_homepage extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

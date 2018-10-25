@@ -76,7 +76,7 @@ public class Plhomescreen extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Welcome back Soldier !");
+        setTitle("Welcome back Lt !");
         getContentPane().setLayout(null);
 
         jPanel3.setLayout(null);
@@ -95,21 +95,21 @@ public class Plhomescreen extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 60, 680, 90);
+        jScrollPane1.setBounds(10, 80, 680, 90);
 
         jLabel1.setBackground(new java.awt.Color(204, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         jLabel1.setText("                   These are your Pending Meetings          ");
         jLabel1.setOpaque(true);
         jPanel3.add(jLabel1);
-        jLabel1.setBounds(120, 180, 500, 25);
+        jLabel1.setBounds(120, 210, 500, 25);
 
         jLabel2.setBackground(new java.awt.Color(204, 255, 255));
         jLabel2.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         jLabel2.setText("          Welcome LT! These are your tasks for today      ");
         jLabel2.setOpaque(true);
         jPanel3.add(jLabel2);
-        jLabel2.setBounds(110, 20, 500, 25);
+        jLabel2.setBounds(110, 40, 500, 25);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,7 +125,7 @@ public class Plhomescreen extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jPanel3.add(jScrollPane2);
-        jScrollPane2.setBounds(20, 230, 670, 90);
+        jScrollPane2.setBounds(20, 250, 670, 90);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel3.add(jLabel4);
@@ -136,11 +136,6 @@ public class Plhomescreen extends javax.swing.JFrame {
 
         meeting.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         meeting.setText("Manage meetings");
-        meeting.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                meetingActionPerformed(evt);
-            }
-        });
 
         jMenuItem1.setText("Request Meeting");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +147,11 @@ public class Plhomescreen extends javax.swing.JFrame {
         jMenuItem1.getAccessibleContext().setAccessibleDescription("");
 
         jMenuItem4.setText("Meetings History and Results");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         meeting.add(jMenuItem4);
         meeting.add(jSeparator1);
 
@@ -162,11 +162,6 @@ public class Plhomescreen extends javax.swing.JFrame {
         jMenu2.setText("Query platoon");
 
         jMenuItem2.setText("Search Platoon");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -175,10 +170,16 @@ public class Plhomescreen extends javax.swing.JFrame {
         jMenu1.setText("Check tasks and workdays");
 
         jMenuItem5.setText("Check calendar and tasks");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
 
+        jMenu3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu3.setText("Generate ");
 
         jMenuItem3.setText("Jouhouz");
@@ -192,6 +193,7 @@ public class Plhomescreen extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu4.setText("Manage Platoon tasks");
 
         jMenuItem8.setText("Manage tasks");
@@ -204,29 +206,23 @@ public class Plhomescreen extends javax.swing.JFrame {
         setBounds(0, 0, 716, 411);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void meetingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetingActionPerformed
-      
-    }//GEN-LAST:event_meetingActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        
+   new Request_meeting().setVisible(true);                                          
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        
-        new CalendarPanelTest().setVisible(true);
-        
-        
-        
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+new Check_meetings_history().setVisible(true);     
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    
-    
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+new CalendarPanelTest().setVisible(true); 
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
   
-//    public static void main(String args[]) {
+   public static void main(String args[]) {
      
-//   new SoldierHome().setVisible(true);
-//            }
+   new Plhomescreen().setVisible(true);
+            }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
