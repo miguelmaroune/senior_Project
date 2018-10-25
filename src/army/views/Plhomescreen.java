@@ -58,6 +58,12 @@ public class Plhomescreen extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         meeting = new javax.swing.JMenu();
@@ -72,8 +78,6 @@ public class Plhomescreen extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome back Lt !");
@@ -95,14 +99,14 @@ public class Plhomescreen extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 80, 680, 90);
+        jScrollPane1.setBounds(10, 400, 680, 90);
 
         jLabel1.setBackground(new java.awt.Color(204, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        jLabel1.setText("                   These are your Pending Meetings          ");
+        jLabel1.setText("                   These are your Platoon tasks          ");
         jLabel1.setOpaque(true);
         jPanel3.add(jLabel1);
-        jLabel1.setBounds(120, 210, 500, 25);
+        jLabel1.setBounds(110, 360, 500, 25);
 
         jLabel2.setBackground(new java.awt.Color(204, 255, 255));
         jLabel2.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
@@ -127,14 +131,49 @@ public class Plhomescreen extends javax.swing.JFrame {
         jPanel3.add(jScrollPane2);
         jScrollPane2.setBounds(20, 250, 670, 90);
 
+        jLabel3.setBackground(new java.awt.Color(204, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        jLabel3.setText("                   These are your Pending Meetings          ");
+        jLabel3.setOpaque(true);
+        jPanel3.add(jLabel3);
+        jLabel3.setBounds(120, 210, 500, 25);
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Assignment Id", "Task ", "Status", "Date", "Reference", "Task report", "Task highlights"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        jPanel3.add(jScrollPane3);
+        jScrollPane3.setBounds(10, 80, 680, 90);
+
+        jButton1.setText("Edit task");
+        jPanel3.add(jButton1);
+        jButton1.setBounds(260, 510, 180, 23);
+
+        jButton2.setText("remove task");
+        jPanel3.add(jButton2);
+        jButton2.setBounds(470, 510, 200, 23);
+
+        jButton3.setText("Add task");
+        jPanel3.add(jButton3);
+        jButton3.setBounds(60, 510, 170, 23);
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel3.add(jLabel4);
-        jLabel4.setBounds(0, 20, 700, 350);
+        jLabel4.setBounds(0, 20, 700, 530);
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, -20, 700, 370);
+        jPanel3.setBounds(0, -20, 700, 570);
 
-        meeting.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        meeting.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         meeting.setText("Manage meetings");
 
         jMenuItem1.setText("Request Meeting");
@@ -158,15 +197,20 @@ public class Plhomescreen extends javax.swing.JFrame {
         jMenuBar1.add(meeting);
         meeting.getAccessibleContext().setAccessibleDescription("");
 
-        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jMenu2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu2.setText("Query platoon");
 
         jMenuItem2.setText("Search Platoon");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
 
-        jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jMenu1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu1.setText("Check tasks and workdays");
 
         jMenuItem5.setText("Check calendar and tasks");
@@ -193,17 +237,9 @@ public class Plhomescreen extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jMenu4.setText("Manage Platoon tasks");
-
-        jMenuItem8.setText("Manage tasks");
-        jMenu4.add(jMenuItem8);
-
-        jMenuBar1.add(jMenu4);
-
         setJMenuBar(jMenuBar1);
 
-        setBounds(0, 0, 716, 411);
+        setBounds(0, 0, 716, 590);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -218,6 +254,10 @@ new Check_meetings_history().setVisible(true);
 new CalendarPanelTest().setVisible(true); 
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+new search().setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
   
    public static void main(String args[]) {
      
@@ -225,13 +265,16 @@ new CalendarPanelTest().setVisible(true);
             }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -240,13 +283,14 @@ new CalendarPanelTest().setVisible(true);
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JMenu meeting;
     // End of variables declaration//GEN-END:variables
 }
