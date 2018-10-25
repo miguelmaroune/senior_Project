@@ -130,7 +130,7 @@ public class LoginPage extends javax.swing.JFrame {
             case "Soldier": 
                 java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SoldierHome().setVisible(true);
+                new Soldier_home().setVisible(true);
             }});         
                 break; 
             case "Platoon Leader": 
