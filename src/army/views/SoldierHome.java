@@ -1,6 +1,8 @@
 
 package army.views;
-
+import army.views.Check_meetings_history;
+import army.views.View_profile;
+import army.views.Request_meeting;
 import army.calendar.CalendarPanel;
 import army.calendar.CalendarPanelTest;
 import army.controller.DbManager;
@@ -23,8 +25,7 @@ public class SoldierHome extends javax.swing.JFrame {
         User user = Uhandler.getCurrUser();
         String username = user.getUsername();
         Connection con = null;
-       
-        
+               
 //        for testing 
 //        String username = "123456";
         try {
@@ -35,7 +36,6 @@ public class SoldierHome extends javax.swing.JFrame {
             Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("adadadadad");
         }
-
         try {
             DailyTasks = Uhandler.dailyTasks(con, username);
         } catch (SQLException ex) {
@@ -43,15 +43,14 @@ public class SoldierHome extends javax.swing.JFrame {
         } finally {
             DbManager.CloseConnection();
         }
-        initComponents();
-    }
+        initComponents();}
+    
 
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -59,6 +58,7 @@ public class SoldierHome extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         meeting = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -68,8 +68,6 @@ public class SoldierHome extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome back Soldier !");
@@ -123,16 +121,15 @@ public class SoldierHome extends javax.swing.JFrame {
         jPanel3.add(jScrollPane2);
         jScrollPane2.setBounds(20, 230, 670, 90);
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
+        jPanel3.add(jLabel4);
+        jLabel4.setBounds(0, 20, 700, 350);
+
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 700, 350);
+        jPanel3.setBounds(0, -20, 700, 370);
 
         meeting.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         meeting.setText("Manage meetings");
-        meeting.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                meetingActionPerformed(evt);
-            }
-        });
 
         jMenuItem1.setText("Request Meeting");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +141,11 @@ public class SoldierHome extends javax.swing.JFrame {
         jMenuItem1.getAccessibleContext().setAccessibleDescription("");
 
         jMenuItem4.setText("Meetings History and Results");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         meeting.add(jMenuItem4);
         meeting.add(jSeparator1);
 
@@ -167,6 +169,11 @@ public class SoldierHome extends javax.swing.JFrame {
         jMenu1.setText("Check tasks and workdays");
 
         jMenuItem5.setText("Check calendar and tasks");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
@@ -176,34 +183,28 @@ public class SoldierHome extends javax.swing.JFrame {
         setBounds(0, 0, 716, 411);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void meetingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetingActionPerformed
-      
-    }//GEN-LAST:event_meetingActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        
+new Request_meeting().setVisible(true);        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        
-        new CalendarPanelTest().setVisible(true);
-        
-        
-        
+new View_profile().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+new Check_meetings_history().setVisible(true);    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       new CalendarPanelTest().setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     
-    
-  
-//    public static void main(String args[]) {
-     
-//   new SoldierHome().setVisible(true);
-//            }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
