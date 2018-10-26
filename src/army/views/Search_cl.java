@@ -49,6 +49,7 @@ public class Search_cl extends javax.swing.JFrame {
         cb3 = new javax.swing.JComboBox<>();
         t3 = new javax.swing.JTextField();
         t4 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,14 +63,14 @@ public class Search_cl extends javax.swing.JFrame {
 
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(1015, 10, 130, 100);
+        jLabel1.setBounds(1015, 10, 120, 100);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "First name", "Last name", "Rank", "D O B", "Platoon Id", "Phone #", "Position", "Blood type", "Driving license", "Training Id", "Sanction ID"
+                "Id", "First name", "Last name", "Rank", "D O B", "Platoon Id", "Phone #", "Position", "Blood type", "Driving license", "Training Id", "Sanction ID", "Rest List"
             }
         ));
         jTable1.setColumnSelectionAllowed(true);
@@ -88,8 +89,11 @@ public class Search_cl extends javax.swing.JFrame {
         jPanel1.add(jButton3);
         jButton3.setBounds(940, 63, 70, 40);
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         cb4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Training Id" }));
+        jPanel2.add(cb4, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 18, 90, 20));
 
         cb5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Driving ID" }));
@@ -98,80 +102,37 @@ public class Search_cl extends javax.swing.JFrame {
                 cb5ActionPerformed(evt);
             }
         });
+        jPanel2.add(cb5, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 18, 100, 20));
+        jPanel2.add(t5, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 49, 100, 30));
+        jPanel2.add(t6, new org.netbeans.lib.awtextra.AbsoluteConstraints(592, 49, 100, 30));
 
         cb1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id ", "First Name", "Last Name", "Rank", "Blood Type", "Training id", "Date of birth", "Platoon Id", "Driving license" }));
+        jPanel2.add(cb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 18, -1, 20));
 
         cb6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sanction ID" }));
+        jPanel2.add(cb6, new org.netbeans.lib.awtextra.AbsoluteConstraints(592, 18, 100, 20));
+        jPanel2.add(t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 49, 114, 30));
 
         cb7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rest LIst" }));
+        jPanel2.add(cb7, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 18, 100, 20));
+        jPanel2.add(t2, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 49, 114, 30));
+        jPanel2.add(t7, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 49, 100, 30));
 
         cb2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id ", "First Name", "Last Name", "Rank", "Blood Type", "Training id", "Date of birth", "Platoon Id", "Driving license" }));
+        jPanel2.add(cb2, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 18, -1, 20));
 
         cb3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id ", "First Name", "Last Name", "Rank", "Blood Type", "Training id", "Date of birth", "Platoon Id", "Driving license" }));
+        jPanel2.add(cb3, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 18, -1, 20));
+        jPanel2.add(t3, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 49, 114, 30));
+        jPanel2.add(t4, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 49, 90, 30));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(t1)
-                    .addComponent(cb1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cb2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(t2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cb3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(t3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cb4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(t4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cb5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(t5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cb6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(t6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cb7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(t7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cb1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(t1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(t2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(t3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(t4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(t5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(t6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(t7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 820, 110));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(10, 20, 810, 90);
@@ -238,6 +199,7 @@ public class Search_cl extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
