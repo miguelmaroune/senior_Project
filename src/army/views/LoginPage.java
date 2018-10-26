@@ -104,7 +104,7 @@ public class LoginPage extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 770, 90);
 
-        setSize(new java.awt.Dimension(786, 555));
+        setSize(new java.awt.Dimension(776, 550));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
         static Logger logger = Logger.getLogger(LoginPage.class);

@@ -48,6 +48,7 @@ public class Soldier_home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome back soldier!");
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel1.setLayout(null);

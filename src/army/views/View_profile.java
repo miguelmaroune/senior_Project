@@ -30,6 +30,7 @@ public class View_profile extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Resume");
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/military-zombie-clipart-vector_csp37053755.jpg"))); // NOI18N
