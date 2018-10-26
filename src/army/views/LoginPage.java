@@ -134,13 +134,19 @@ public class LoginPage extends javax.swing.JFrame {
             }});         
                 break; 
             case "Platoon Leader": 
-                System.out.println("two"); 
+                java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Plhomescreen().setVisible(true); }});
                 break; 
             case "Company Leader": 
-                System.out.println("three"); 
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Cl_homepage().setVisible(true); }});
                 break; 
             case "Secretary": 
-                System.out.println("three"); 
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SecretaryHome().setVisible(true); }});
                 break; 
             default: 
            JOptionPane.showMessageDialog(null, "invalid login Privileges!!!", "login error", JOptionPane.ERROR_MESSAGE); 
