@@ -90,7 +90,7 @@ public class Cl_homepage extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Welcome back Soldier !");
+        setTitle("Welcome back Captain !");
         setResizable(false);
         getContentPane().setLayout(null);
 

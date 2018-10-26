@@ -40,6 +40,7 @@ public class LoginPage extends javax.swing.JFrame {
         setTitle("Lebanese Army");
         setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         setName("LoginFrame"); // NOI18N
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel2.setLayout(null);

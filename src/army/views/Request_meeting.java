@@ -25,6 +25,7 @@ public class Request_meeting extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Please Enter The Subject Of The Meeting...");
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel1.setLayout(null);
