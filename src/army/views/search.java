@@ -97,7 +97,7 @@ public class search extends javax.swing.JFrame {
 
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(1045, 10, 100, 100);
+        jLabel1.setBounds(1040, 10, 100, 100);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/magnifier.png"))); // NOI18N
         jPanel1.add(jButton1);
@@ -122,7 +122,7 @@ public class search extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Edit");
         jPanel1.add(jButton2);
-        jButton2.setBounds(960, 10, 70, 100);
+        jButton2.setBounds(950, 10, 70, 100);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
