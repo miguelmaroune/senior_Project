@@ -41,6 +41,7 @@ public class adduser extends javax.swing.JFrame {
         setTitle("insert user's information");
         setBackground(new java.awt.Color(255, 121, 27));
         setFocusCycleRoot(false);
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

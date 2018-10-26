@@ -81,6 +81,7 @@ public class Plhomescreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome back Lt !");
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel3.setLayout(null);

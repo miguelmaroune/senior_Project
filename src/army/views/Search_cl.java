@@ -1,11 +1,20 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package army.views;
 
+/**
+ *
+ * @author ronyl
+ */
+public class Search_cl extends javax.swing.JFrame {
 
-public class search extends javax.swing.JFrame {
-
-   
-    public search() {
+    /**
+     * Creates new form Search_cl
+     */
+    public Search_cl() {
         initComponents();
     }
 
@@ -19,6 +28,12 @@ public class search extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         cb4 = new javax.swing.JComboBox<>();
         cb5 = new javax.swing.JComboBox<>();
@@ -34,17 +49,44 @@ public class search extends javax.swing.JFrame {
         cb3 = new javax.swing.JComboBox<>();
         t3 = new javax.swing.JTextField();
         t4 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jPanel1.setLayout(null);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/magnifier.png"))); // NOI18N
+        jPanel1.add(jButton1);
+        jButton1.setBounds(830, 10, 105, 100);
+
+        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(1015, 10, 130, 100);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "First name", "Last name", "Rank", "D O B", "Platoon Id", "Phone #", "Position", "Blood type", "Driving license", "Training Id", "Sanction ID"
+            }
+        ));
+        jTable1.setColumnSelectionAllowed(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 130, 1130, 402);
+
+        jButton2.setText("Edit");
+        jPanel1.add(jButton2);
+        jButton2.setBounds(940, 10, 70, 40);
+
+        jButton3.setText("Archive");
+        jPanel1.add(jButton3);
+        jButton3.setBounds(940, 63, 70, 40);
 
         cb4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Training Id" }));
@@ -134,38 +176,9 @@ public class search extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(10, 20, 810, 90);
 
-        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(1045, 10, 100, 100);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/magnifier.png"))); // NOI18N
-        jPanel1.add(jButton1);
-        jButton1.setBounds(830, 10, 105, 100);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "First name", "Last name", "Rank", "D O B", "Platoon Id", "Phone #", "Position", "Blood type", "Driving license", "Training Id", "Sanction ID"
-            }
-        ));
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 130, 1130, 402);
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Edit");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(940, 10, 70, 100);
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 1200, 797);
+        jLabel2.setBounds(0, 0, 1160, 540);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1160, 540);
@@ -177,12 +190,37 @@ public class search extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cb5ActionPerformed
 
-   
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
-       
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Search_cl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Search_cl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Search_cl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Search_cl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new search().setVisible(true);
+                new Search_cl().setVisible(true);
             }
         });
     }
@@ -197,6 +235,7 @@ public class search extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb7;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
