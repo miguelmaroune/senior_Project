@@ -64,6 +64,7 @@ public class Plhomescreen extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         meeting = new javax.swing.JMenu();
@@ -77,7 +78,6 @@ public class Plhomescreen extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome back Lt !");
@@ -114,7 +114,7 @@ public class Plhomescreen extends javax.swing.JFrame {
         jLabel2.setText("          Welcome LT! These are your tasks for today      ");
         jLabel2.setOpaque(true);
         jPanel3.add(jLabel2);
-        jLabel2.setBounds(110, 40, 500, 25);
+        jLabel2.setBounds(110, 30, 500, 25);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -153,7 +153,7 @@ public class Plhomescreen extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTable3);
 
         jPanel3.add(jScrollPane3);
-        jScrollPane3.setBounds(10, 80, 680, 90);
+        jScrollPane3.setBounds(10, 70, 680, 90);
 
         jButton1.setText("Edit task");
         jPanel3.add(jButton1);
@@ -166,6 +166,10 @@ public class Plhomescreen extends javax.swing.JFrame {
         jButton3.setText("Add task");
         jPanel3.add(jButton3);
         jButton3.setBounds(60, 510, 170, 23);
+
+        jButton7.setText("Add task report");
+        jPanel3.add(jButton7);
+        jButton7.setBounds(450, 170, 150, 23);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel3.add(jLabel4);
@@ -227,14 +231,16 @@ public class Plhomescreen extends javax.swing.JFrame {
         jMenu3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu3.setText("Generate ");
 
-        jMenuItem3.setText("Jouhouz");
+        jMenuItem3.setText("Jouhouz and mission paper");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuItem6.setText("Jadwal");
         jMenu3.add(jMenuItem6);
-
-        jMenuItem7.setText("Mission paper");
-        jMenu3.add(jMenuItem7);
 
         jMenuBar1.add(jMenu3);
 
@@ -259,6 +265,10 @@ new CalendarPanelTest().setVisible(true);
 new search().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+new Listjouhouz().setVisible(true);        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
   
    public static void main(String args[]) {
      
@@ -269,6 +279,7 @@ new search().setVisible(true);
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -283,7 +294,6 @@ new search().setVisible(true);
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

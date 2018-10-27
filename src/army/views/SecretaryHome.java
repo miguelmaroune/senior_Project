@@ -66,6 +66,8 @@ public class SecretaryHome extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         meeting = new javax.swing.JMenu();
@@ -104,14 +106,14 @@ public class SecretaryHome extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 200, 680, 90);
+        jScrollPane1.setBounds(10, 240, 680, 90);
 
         jLabel1.setBackground(new java.awt.Color(204, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         jLabel1.setText("                        Paperwork reminder        ");
         jLabel1.setOpaque(true);
         jPanel3.add(jLabel1);
-        jLabel1.setBounds(110, 160, 500, 25);
+        jLabel1.setBounds(110, 200, 500, 25);
 
         jLabel2.setBackground(new java.awt.Color(204, 255, 255));
         jLabel2.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
@@ -134,11 +136,11 @@ public class SecretaryHome extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jPanel3.add(jScrollPane2);
-        jScrollPane2.setBounds(20, 380, 670, 90);
+        jScrollPane2.setBounds(20, 420, 670, 90);
 
         jButton1.setText("Set Meeting Date");
         jPanel3.add(jButton1);
-        jButton1.setBounds(530, 480, 150, 23);
+        jButton1.setBounds(530, 520, 150, 23);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,30 +163,38 @@ public class SecretaryHome extends javax.swing.JFrame {
         jLabel4.setText("                   These are Pending Meetings          ");
         jLabel4.setOpaque(true);
         jPanel3.add(jLabel4);
-        jLabel4.setBounds(110, 340, 500, 25);
+        jLabel4.setBounds(110, 380, 500, 25);
 
         jButton2.setText("Edit");
         jPanel3.add(jButton2);
-        jButton2.setBounds(290, 300, 120, 23);
+        jButton2.setBounds(190, 340, 120, 23);
 
-        jButton3.setText("remove");
+        jButton3.setText("Add task report");
         jPanel3.add(jButton3);
-        jButton3.setBounds(440, 300, 150, 23);
+        jButton3.setBounds(540, 340, 150, 23);
 
         jButton4.setText("Add");
         jPanel3.add(jButton4);
-        jButton4.setBounds(120, 300, 140, 23);
+        jButton4.setBounds(20, 340, 140, 23);
 
         jButton5.setText("Set Meeting Status");
         jPanel3.add(jButton5);
-        jButton5.setBounds(350, 480, 150, 23);
+        jButton5.setBounds(350, 520, 150, 23);
+
+        jButton6.setText("remove");
+        jPanel3.add(jButton6);
+        jButton6.setBounds(360, 340, 150, 23);
+
+        jButton7.setText("Add task report");
+        jPanel3.add(jButton7);
+        jButton7.setBounds(460, 160, 150, 23);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel3.add(jLabel3);
-        jLabel3.setBounds(0, 0, 700, 510);
+        jLabel3.setBounds(0, 0, 700, 540);
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 700, 510);
+        jPanel3.setBounds(0, 0, 700, 550);
 
         meeting.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         meeting.setText("Manage meetings");
@@ -270,7 +280,7 @@ public class SecretaryHome extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setBounds(0, 0, 716, 574);
+        setBounds(0, 0, 716, 605);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -311,6 +321,8 @@ new search().setVisible(true);
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
