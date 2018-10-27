@@ -84,7 +84,7 @@ public class SecretaryHome extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Welcome back Soldier !");
+        setTitle("Welcome back Secretary !");
         setResizable(false);
         getContentPane().setLayout(null);
 

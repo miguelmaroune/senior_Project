@@ -67,6 +67,9 @@ public class Haras extends javax.swing.JFrame {
         jTable12 = new javax.swing.JTable();
         jScrollPane13 = new javax.swing.JScrollPane();
         jTable13 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         jTable9.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,6 +93,7 @@ public class Haras extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 378, -1));
         getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 0, 245, 29));
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null},
@@ -120,16 +124,18 @@ public class Haras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(542, 40, 851, 340));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("العديد الجاهز");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 15, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 9, 67, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 67, -1));
 
+        jTable2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -148,6 +154,7 @@ public class Haras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 40, 240, 139));
 
+        jTable3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -169,8 +176,9 @@ public class Haras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 383, 520, 190));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("كلمة المرور");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 15, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,8 +187,9 @@ public class Haras extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 9, 67, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("كلمة التعارف ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 15, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +198,7 @@ public class Haras extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 9, 67, -1));
 
+        jTable4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -204,6 +214,7 @@ public class Haras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 480, 264, 98));
 
+        jTable5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -223,6 +234,7 @@ public class Haras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 216, 528, 161));
 
+        jTable6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -238,6 +250,7 @@ public class Haras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 383, 264, 91));
 
+        jTable7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -253,6 +266,7 @@ public class Haras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 580, 250, 100));
 
+        jTable8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTable8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -268,11 +282,13 @@ public class Haras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 584, 264, 91));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("المركز");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 191, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("العديد الجاهز");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 191, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,16 +297,19 @@ public class Haras extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 185, 67, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("نظر و صدق ");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 681, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("ضابط الدوام");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 681, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tekton Pro Ext", 1, 11)); // NOI18N
         jLabel9.setText("Property of First Lieutenant LOUIS Rony. F");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 680, 250, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 690, 250, -1));
 
+        jTable10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTable10.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -337,6 +356,7 @@ public class Haras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 380, 330, 300));
 
+        jTable12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTable12.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -352,6 +372,7 @@ public class Haras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 584, 258, 91));
 
+        jTable13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTable13.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -379,6 +400,16 @@ public class Haras extends javax.swing.JFrame {
         jScrollPane13.setViewportView(jTable13);
 
         getContentPane().add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 380, 250, 300));
+
+        jButton1.setText("Print");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 680, -1, -1));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 710));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
+        jLabel11.setToolTipText("");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 0, 240, 710));
 
         setBounds(0, 0, 1412, 745);
     }// </editor-fold>//GEN-END:initComponents
@@ -435,8 +466,11 @@ public class Haras extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
