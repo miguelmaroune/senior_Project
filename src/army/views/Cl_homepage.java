@@ -321,7 +321,7 @@ public class Cl_homepage extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-new Sanction_paper().setVisible(true);
+    new Sanction_paper().setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void meetingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetingActionPerformed
@@ -329,7 +329,7 @@ new Sanction_paper().setVisible(true);
     }//GEN-LAST:event_meetingActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-new Request_meeting_cl().setVisible(true);
+    new Request_meeting_cl().setVisible(true);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

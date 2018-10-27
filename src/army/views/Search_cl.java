@@ -64,7 +64,7 @@ public class Search_cl extends javax.swing.JFrame {
 
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(1015, 10, 120, 100);
+        jLabel1.setBounds(1035, 10, 100, 100);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,11 +84,11 @@ public class Search_cl extends javax.swing.JFrame {
 
         jButton2.setText("Edit");
         jPanel1.add(jButton2);
-        jButton2.setBounds(940, 10, 70, 40);
+        jButton2.setBounds(940, 10, 90, 40);
 
         jButton3.setText("Archive");
         jPanel1.add(jButton3);
-        jButton3.setBounds(940, 63, 70, 40);
+        jButton3.setBounds(940, 63, 90, 40);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
