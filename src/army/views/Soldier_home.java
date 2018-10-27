@@ -34,6 +34,7 @@ public class Soldier_home extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
@@ -65,7 +66,7 @@ public class Soldier_home extends javax.swing.JFrame {
         jLabel1.setText("                   These are your Pending Meetings          ");
         jLabel1.setOpaque(true);
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(90, 200, 500, 25);
+        jLabel1.setBounds(90, 240, 500, 25);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,7 +98,11 @@ public class Soldier_home extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(20, 250, 670, 90);
+        jScrollPane2.setBounds(20, 280, 670, 90);
+
+        jButton1.setText("Add Task Report");
+        jPanel1.add(jButton1);
+        jButton1.setBounds(450, 190, 160, 23);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel1.add(jLabel3);
@@ -185,6 +190,7 @@ new Check_meetings_history().setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

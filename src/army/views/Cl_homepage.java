@@ -202,6 +202,11 @@ public class Cl_homepage extends javax.swing.JFrame {
         jMenu1.add(jMenuItem5);
 
         jMenuItem14.setText("Manage workdays");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem14);
 
         jMenuItem18.setText("Check workdays and tasks");
@@ -313,7 +318,7 @@ public class Cl_homepage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-      
+new Tasks().setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
@@ -359,6 +364,10 @@ new   Listjouhouz().setVisible(true);    }//GEN-LAST:event_jMenuItem15ActionPerf
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
 new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        new Workdays().setVisible(true);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     
     

@@ -27,20 +27,92 @@ public class Tasks extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Manage Tasks");
+        getContentPane().setLayout(null);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(302, 11, 137, 20);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 915, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 475, Short.MAX_VALUE)
-        );
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("View tasks by");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(99, 16, 94, 17);
+        getContentPane().add(jDateChooser1);
+        jDateChooser1.setBounds(302, 39, 137, 20);
 
-        pack();
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Task Id", "Soldier ID", "Date and Time", "Reference", "Task status", "Highlights", "Task report"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(10, 443, 895, 50);
+
+        jButton1.setText("Edit");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(675, 402, 51, 23);
+
+        jButton2.setText("Delete");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(744, 402, 63, 23);
+
+        jButton3.setText("Add Task");
+        getContentPane().add(jButton3);
+        jButton3.setBounds(730, 503, 77, 23);
+
+        jRadioButton1.setText("Military Id");
+        getContentPane().add(jRadioButton1);
+        jRadioButton1.setBounds(211, 10, 73, 23);
+
+        jRadioButton2.setText("Date");
+        getContentPane().add(jRadioButton2);
+        jRadioButton2.setBounds(211, 34, 49, 23);
+
+        jButton4.setText("View");
+        getContentPane().add(jButton4);
+        jButton4.setBounds(471, 21, 55, 23);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Assignment Id", "Task Id", "Soldier ID", "Date and Time", "Reference", "Task status", "Highlights", "Task report"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setHeaderValue("Assignment Id");
+        }
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(10, 77, 895, 307);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 920, 540);
+
+        setBounds(0, 0, 931, 576);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -79,5 +151,19 @@ public class Tasks extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
