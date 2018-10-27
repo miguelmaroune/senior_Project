@@ -82,12 +82,12 @@ public class Cl_homepage extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
-        jMenuItem17 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome back Captain !");
@@ -252,14 +252,16 @@ public class Cl_homepage extends javax.swing.JFrame {
         jMenu6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu6.setText("Generate");
 
-        jMenuItem15.setText("Jouhouz");
+        jMenuItem15.setText("لائحة الجهوز والمهمات");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem15);
 
-        jMenuItem16.setText("Jadwal");
+        jMenuItem16.setText("Schedule");
         jMenu6.add(jMenuItem16);
-
-        jMenuItem17.setText("Mission paper");
-        jMenu6.add(jMenuItem17);
 
         jMenuBar1.add(jMenu6);
 
@@ -295,6 +297,14 @@ public class Cl_homepage extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem12);
 
+        jMenuItem10.setText("ورقة الحرس");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem10);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -319,7 +329,7 @@ new Sanction_paper().setVisible(true);
     }//GEN-LAST:event_meetingActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-new Request_meeting().setVisible(true);
+new Request_meeting_cl().setVisible(true);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -344,6 +354,12 @@ new Search_cl().setVisible(true);
      new   adduser().setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+new   Listjouhouz().setVisible(true);    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
     
     
   
@@ -367,12 +383,12 @@ new Search_cl().setVisible(true);
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
