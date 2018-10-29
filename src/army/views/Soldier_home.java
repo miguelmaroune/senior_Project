@@ -1,5 +1,5 @@
-
 package army.views;
+
 import army.views.Check_meetings_history;
 import army.views.View_profile;
 import army.views.Request_meeting;
@@ -11,17 +11,40 @@ import army.model.User;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 public class Soldier_home extends javax.swing.JFrame {
 
-    
+    private Vector<Vector<String>> meetings = new Vector<>();
+
     public Soldier_home() {
+        UserHandler Uhandler = new UserHandler();
+        User user = Uhandler.getCurrUser();
+        Connection con = null;
+        String username = user.getUsername();
+//        for testing 
+//        String username = "123456";
+        try {
+            if (con == null) {
+                con = DbManager.getConnection();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Soldier_home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            meetings = Uhandler.check_meeting(con, username);
+        } catch (SQLException ex) {
+            Logger.getLogger(Soldier_home.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DbManager.CloseConnection();
+        }
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -48,6 +71,7 @@ public class Soldier_home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome back soldier!");
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel1.setLayout(null);
@@ -68,9 +92,6 @@ public class Soldier_home extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
             new String [] {
@@ -84,15 +105,14 @@ public class Soldier_home extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
                 "Meeting Id", "Subject", "Status", "Date"
             }
         ));
+        setMeetingTbl();
+        jTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane2);
@@ -158,30 +178,33 @@ public class Soldier_home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-new Request_meeting().setVisible(true);                                         
+//              Request_meeting req = new Request_meeting();
+//              req.setVisible(true);
+        new Request_meeting().setVisible(true);
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-                                        
-new Check_meetings_history().setVisible(true);                                           
+
+        new Check_meetings_history().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-  new View_profile().setVisible(true);     
+        new View_profile().setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
- new CalendarPanelTest().setVisible(true);       
+        new CalendarPanelTest().setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    public static void main(String args[]) {
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Soldier_home().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Soldier_home().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -202,4 +225,18 @@ new Check_meetings_history().setVisible(true);
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
+public  void setMeetingTbl() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        for (Vector<String> v : meetings) {
+// "Meeting Id", "Subject", "Status", "Date"       
+            String Meeting_ID = v.get(0);
+            String Subject = v.get(1);
+            String Status = v.get(2);
+            String Date = v.get(3);
+
+            model.addRow(new Object[]{Meeting_ID, Subject, Status, Date});
+        }
+
+    }
 }

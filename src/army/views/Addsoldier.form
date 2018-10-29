@@ -2,7 +2,6 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="FILL IN THE INFORMATION"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
@@ -1249,9 +1248,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ronyl\Desktop\icons\qqqqq.jpg"/>
-            </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Constraints>
@@ -1264,9 +1260,6 @@
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="cc" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ronyl\Desktop\icons\Untitledcolor.png"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>

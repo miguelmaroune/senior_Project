@@ -10,7 +10,7 @@ public class Settings {
 	public static final String DBPassword = "";
         
 //        xml file location
-        public static final String filePath = "c://Users//ronyl//Desktop//";
+        public static final String filePath = "c://Users//User//Desktop//";
         public static final String fileName = "Soldiers.xml";
      
 }
