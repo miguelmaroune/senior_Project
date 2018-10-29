@@ -113,17 +113,19 @@ public class UserHandler {
         return dailyTask;
     }
 
-    public void request_meeting(Connection connection, String CurrentUser, String request) {
+    public void request_meeting(Connection connection, String CurrentUser, String request) throws SQLException {
         //pending date_NotSet
         try {
-            String query = " insert into meeting (Meeting_Subject, Meeting_Status, Soldier_Id)"
-                    + " values (?, ?, ?)";
+            String query = " insert into meeting (Meeting_Date ,Meeting_Subject,Meeting_Result, Meeting_Status, Soldier_Id)"
+                    + " values (?, ?, ?,?,?)";
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setString(1, request);
-            preparedStmt.setString(2, "Pending Date_NotSet");
-            preparedStmt.setString(3, CurrentUser);
+            preparedStmt.setString(1, "");
+            preparedStmt.setString(2, request);
+            preparedStmt.setString(3, " ");
+            preparedStmt.setString(4, "Pending Date_NotSet");
+            preparedStmt.setString(5, CurrentUser);
 
             // execute the preparedstatement
             preparedStmt.execute();
@@ -133,13 +135,13 @@ public class UserHandler {
         }
     }
 
-    public Vector<Vector<String>> check_meeting(Connection connection, String CurrentUser) {
+    public Vector<Vector<String>> check_meeting(Connection connection, String CurrentUser) throws SQLException {
 //
         Vector<Vector<String>> chk = new Vector<Vector<String>>();
 
         try {
-            String query = "SELECT Id_Meeting,COALESCE(NULLIF(Meeting_Date, ''), 'NOT SET') "
-                    + "AS Meeting_Date ,Meeting_Status  "
+            String query = "SELECT Id_Meeting,Meeting_Subject,Meeting_Status ,COALESCE(NULLIF(Meeting_Date, ''), 'NOT SET') "
+                    + "AS Meeting_Date  "
                     + "FROM meeting"
                     + " where Soldier_Id = " + CurrentUser;
 //               
@@ -149,8 +151,173 @@ public class UserHandler {
             while (rs.next()) {
                 Vector<String> day = new Vector<String>();
                 day.add(rs.getString("Id_Meeting"));
-                day.add(rs.getString("Meeting_Date"));
+                day.add(rs.getString("Meeting_Subject"));
                 day.add(rs.getString("Meeting_Status"));
+                day.add(rs.getString("Meeting_Date"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
+
+    public Vector<Vector<String>> meetings_history(Connection connection, String CurrentUser) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+        try {
+            String query = "SELECT Id_Meeting , Meeting_Subject , Meeting_Status , Meeting_Date , Meeting_Result "
+                    + "FROM meeting "
+                    + "WHERE Meeting_Result <> '' "
+                    + " AND Soldier_Id = " + CurrentUser;
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Id_Meeting"));
+                day.add(rs.getString("Meeting_Subject"));
+                day.add(rs.getString("Meeting_Status"));
+                day.add(rs.getString("Meeting_Date"));
+                day.add(rs.getString("Meeting_Result"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
+
+    public Vector<Object> ViewProfile(Connection connection, String CurrentUser) throws SQLException {
+        Vector<Object> prof = new Vector<>();
+
+        try {
+            String query = "SELECT Soldier_Id , Platoon_Id , First_Name , Last_Name , "
+                    + "  Phone_Number , Rank , Position , Available ,DOB ,"
+                    + "  Blood_Type "
+                    + " FROM soldier "
+                    + " WHERE Soldier_Id = " + CurrentUser;
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                prof.add(rs.getInt("Soldier_Id"));
+                prof.add(rs.getInt("Platoon_Id"));
+                prof.add(rs.getString("First_Name"));
+                prof.add(rs.getString("Last_Name"));
+                prof.add(rs.getInt("Phone_Number"));
+                prof.add(rs.getString("Rank"));
+                prof.add(rs.getString("Position"));
+                prof.add(rs.getInt("Available"));
+                prof.add(rs.getString("DOB"));
+                prof.add(rs.getString("Blood_Type"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return prof;
+
+    }
+
+    public Vector<Vector<String>> training(Connection connection, String CurrentUser) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+//        SELECT description , reference , start , end , location  , Evaluation 
+//FROM achieve_training a, training t 
+//WHERE a.training_Id = t.training_Id 
+        try {
+            String query = "SELECT description , reference , start , end , location , Evaluation "
+                    + "FROM achieve_training a, training t "
+                    + "WHERE a.training_Id = t.training_Id "
+                    + " AND a.Soldier_Id = " + CurrentUser;
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("description"));
+                day.add(rs.getString("reference"));
+                day.add(rs.getString("start"));
+                day.add(rs.getString("end"));
+                day.add(rs.getString("location"));
+                day.add(rs.getString("Evaluation"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
+
+    public Vector<Vector<String>> rest(Connection connection, String CurrentUser) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+//        SELECT description , reference , start , end , location  , Evaluation 
+//FROM achieve_training a, training t 
+//WHERE a.training_Id = t.training_Id 
+        try {
+            String query = "SELECT Type_Rest , Reference_Rest , Start , End , Cause  "
+                    + "FROM rest "
+                    + "WHERE Soldier_Id = " + CurrentUser;
+
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Type_Rest"));
+                day.add(rs.getString("Reference_Rest"));
+                day.add(rs.getString("start"));
+                day.add(rs.getString("end"));
+                day.add(rs.getString("Cause"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
+
+    public Vector<Vector<String>> sanctions(Connection connection, String CurrentUser) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+//SELECT  description , start , end , duration , executed , date_Commited , deduction , status
+//FROM execute_sanction e , sanction s 
+//WHERE e.Sanction_ID = S.Sanction_ID
+        try {
+            String query = "SELECT description,reference , start , end , e.duration , executed , date_Commited , deduction , status  "
+                    + "FROM execute_sanction e , sanction s "
+                    + "WHERE e.Sanction_ID = S.Sanction_ID"
+                    + " AND   e.Soldier_Id = " + CurrentUser;
+
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("description"));
+                day.add(rs.getString("reference"));
+                day.add(rs.getString("start"));
+                day.add(rs.getString("end"));
+                day.add(rs.getString("duration"));
+                day.add(rs.getString("executed"));
+                day.add(rs.getString("date_Commited"));
+                day.add(rs.getString("deduction"));
+                day.add(rs.getString("status"));
                 chk.add(day);
             }
 
