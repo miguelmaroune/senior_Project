@@ -40,18 +40,20 @@ public class Tasks extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Manage Tasks");
         getContentPane().setLayout(null);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(302, 11, 137, 20);
+        jTextField1.setBounds(300, 70, 137, 20);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("View tasks by");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(99, 16, 94, 17);
+        jLabel1.setBounds(30, 20, 94, 17);
         getContentPane().add(jDateChooser1);
         jDateChooser1.setBounds(302, 39, 137, 20);
 
@@ -80,13 +82,13 @@ public class Tasks extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(730, 503, 77, 23);
 
-        jRadioButton1.setText("Military Id");
+        jRadioButton1.setText("Assignment id");
         getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(211, 10, 73, 23);
+        jRadioButton1.setBounds(160, 70, 120, 23);
 
         jRadioButton2.setText("Date");
         getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(211, 34, 49, 23);
+        jRadioButton2.setBounds(160, 40, 120, 23);
 
         jButton4.setText("View");
         getContentPane().add(jButton4);
@@ -106,7 +108,13 @@ public class Tasks extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(10, 77, 895, 307);
+        jScrollPane2.setBounds(10, 124, 895, 260);
+
+        jRadioButton3.setText("Military Id");
+        getContentPane().add(jRadioButton3);
+        jRadioButton3.setBounds(160, 10, 120, 23);
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(302, 11, 137, 20);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -160,10 +168,12 @@ public class Tasks extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

@@ -68,6 +68,7 @@ public class SecretaryHome extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         meeting = new javax.swing.JMenu();
@@ -94,13 +95,13 @@ public class SecretaryHome extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Assignment Id", "Task ", "Status", "Date", "Reference", "Task report", "Task highlights"
+                "Assignment Id", "Task ", "Status", "Date", "Reference", "Task report", "Task highlights", "Id"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -167,15 +168,15 @@ public class SecretaryHome extends javax.swing.JFrame {
 
         jButton2.setText("Edit");
         jPanel3.add(jButton2);
-        jButton2.setBounds(190, 340, 120, 23);
+        jButton2.setBounds(110, 340, 120, 23);
 
-        jButton3.setText("Add task report");
+        jButton3.setText("Edit task status");
         jPanel3.add(jButton3);
-        jButton3.setBounds(540, 340, 150, 23);
+        jButton3.setBounds(350, 340, 150, 23);
 
         jButton4.setText("Add");
         jPanel3.add(jButton4);
-        jButton4.setBounds(20, 340, 140, 23);
+        jButton4.setBounds(20, 340, 80, 23);
 
         jButton5.setText("Set Meeting Status");
         jPanel3.add(jButton5);
@@ -183,11 +184,15 @@ public class SecretaryHome extends javax.swing.JFrame {
 
         jButton6.setText("remove");
         jPanel3.add(jButton6);
-        jButton6.setBounds(360, 340, 150, 23);
+        jButton6.setBounds(240, 340, 100, 23);
 
         jButton7.setText("Add task report");
         jPanel3.add(jButton7);
         jButton7.setBounds(460, 160, 150, 23);
+
+        jButton8.setText("Add task report");
+        jPanel3.add(jButton8);
+        jButton8.setBounds(510, 340, 150, 23);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel3.add(jLabel3);
@@ -323,6 +328,7 @@ new search().setVisible(true);
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
