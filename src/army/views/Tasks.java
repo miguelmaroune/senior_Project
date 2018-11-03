@@ -72,27 +72,27 @@ public class Tasks extends javax.swing.JFrame {
 
         jButton1.setText("Edit");
         getContentPane().add(jButton1);
-        jButton1.setBounds(675, 402, 51, 23);
+        jButton1.setBounds(626, 402, 100, 23);
 
         jButton2.setText("Delete");
         getContentPane().add(jButton2);
-        jButton2.setBounds(744, 402, 63, 23);
+        jButton2.setBounds(744, 402, 100, 23);
 
         jButton3.setText("Add Task");
         getContentPane().add(jButton3);
-        jButton3.setBounds(730, 503, 77, 23);
+        jButton3.setBounds(730, 503, 120, 23);
 
         jRadioButton1.setText("Assignment id");
         getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(160, 70, 120, 23);
+        jRadioButton1.setBounds(140, 70, 140, 23);
 
         jRadioButton2.setText("Date");
         getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(160, 40, 120, 23);
+        jRadioButton2.setBounds(140, 40, 140, 23);
 
         jButton4.setText("View");
         getContentPane().add(jButton4);
-        jButton4.setBounds(471, 21, 55, 23);
+        jButton4.setBounds(471, 21, 90, 23);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,7 +112,7 @@ public class Tasks extends javax.swing.JFrame {
 
         jRadioButton3.setText("Military Id");
         getContentPane().add(jRadioButton3);
-        jRadioButton3.setBounds(160, 10, 120, 23);
+        jRadioButton3.setBounds(140, 10, 140, 23);
         getContentPane().add(jTextField2);
         jTextField2.setBounds(302, 11, 137, 20);
 
