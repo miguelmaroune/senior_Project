@@ -334,7 +334,7 @@ new Tasks().setVisible(true);
     }//GEN-LAST:event_meetingActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-    new Request_meetingpl().setVisible(true);
+    new Request_meetingcl().setVisible(true);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
