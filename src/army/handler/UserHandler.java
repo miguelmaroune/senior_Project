@@ -126,7 +126,7 @@ public class UserHandler {
 
                 dailyTask.add(rs.getString("Description") + ";" + rs.getString("Reference"));
 
-            }
+            } 
 
         } catch (SQLException ex) {
             Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
