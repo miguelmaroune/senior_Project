@@ -14,6 +14,27 @@ import java.util.logging.Logger;
 
 public class UserHandler {
 
+    public static void update_meeting_status(Vector<String> v, Connection connection, String CurrentUser) throws SQLException {
+//        "UPDATE meeting SET Meeting_Status = "+ v.get(2)+" WHERE Id_Meeting = "+v.get(0)  ;
+      
+        try {
+            String query = "UPDATE meeting SET Meeting_Status = ? WHERE Id_Meeting = ? "  ;
+                    
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, v.get(2));
+            preparedStmt.setString(2, v.get(0));
+            
+            // execute the preparedstatement
+            preparedStmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 //    the username must be the soldierID 
     public User getCurrUser() {
         User CurrentUser = User.getinstance();
@@ -325,5 +346,57 @@ public class UserHandler {
             Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
         return chk;
+    }
+
+    public Vector<Vector<String>> Secretary_meeting(Connection connection, String CurrentUser) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+//        
+
+        try {
+            String query = "SELECT Id_Meeting,Meeting_Subject,Meeting_Status ,COALESCE(NULLIF(Meeting_Date, ''), 'NOT SET') "
+                    + "AS Meeting_Date  "
+                    + "FROM meeting"
+                    + " WHERE Soldier_Id IN (SELECT Soldier_Id"
+                    + "                      FROM soldier "
+                    + "                      WHERE Platoon_Id = (SELECT Platoon_Id "
+                    + "                                          FROM soldier "
+                    + "                                          WHERE Soldier_Id = " + CurrentUser + "))";
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Id_Meeting"));
+                day.add(rs.getString("Meeting_Subject"));
+                day.add(rs.getString("Meeting_Status"));
+                day.add(rs.getString("Meeting_Date"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
+
+    public void update_meeting_Date(Vector<String> v, Connection con, String username) throws SQLException {
+   try {
+            String query = "UPDATE meeting SET Meeting_Date = ? WHERE Id_Meeting = ? "  ;
+                    
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setString(1, v.get(3));
+            preparedStmt.setString(2, v.get(0));
+            
+            // execute the preparedstatement
+            preparedStmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 }
