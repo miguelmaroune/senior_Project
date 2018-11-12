@@ -70,6 +70,7 @@ public class Soldier_home extends javax.swing.JFrame {
 
         jMenu1.setText("jMenu1");
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome back soldier!");
         setResizable(false);
         getContentPane().setLayout(null);

@@ -101,6 +101,7 @@ setMeetingTbl();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome back Captain !");
         setResizable(false);
         getContentPane().setLayout(null);
@@ -511,7 +512,7 @@ public void setMeetingTbl() {
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setRowCount(0);
         for (Vector<String> v : meetings) {
-// "Meeting Id", "Subject", "Status", "Date"       
+// "Meeting Id","Military Id "Subject", "Status", "Date"       
             String Meeting_ID = v.get(0);
             String Military_ID = v.get(1);
             String Subject = v.get(2);
