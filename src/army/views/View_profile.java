@@ -19,7 +19,7 @@ public class View_profile extends javax.swing.JFrame {
     private Vector<Vector<String>> sanctions = new Vector<>();
 
     public View_profile() {
-        ImageIcon img ;
+      //  ImageIcon img ;
         UserHandler Uhandler = new UserHandler();
         User user = Uhandler.getCurrUser();
         Connection con = null;
@@ -70,7 +70,6 @@ public class View_profile extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon((ImageIcon) general_info.get(10));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(20, 10, 103, 117);
 

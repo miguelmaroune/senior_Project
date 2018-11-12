@@ -5,6 +5,9 @@
  */
 package army.views;
 
+import java.awt.print.Printable;
+import java.awt.print.PrinterJob;
+
 /**
  *
  * @author ronyl
@@ -68,6 +71,7 @@ public class Haras extends javax.swing.JFrame {
         jScrollPane13 = new javax.swing.JScrollPane();
         jTable13 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
@@ -403,6 +407,14 @@ public class Haras extends javax.swing.JFrame {
         jButton1.setText("Print");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 680, -1, -1));
 
+        jButton2.setText("Print");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 680, -1, 20));
+
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 710));
 
@@ -428,6 +440,14 @@ public class Haras extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+PrinterJob job =PrinterJob.getPrinterJob();
+job.setJobName("print");
+
+        
+    
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -466,6 +486,7 @@ public class Haras extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

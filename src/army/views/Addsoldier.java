@@ -661,7 +661,7 @@ public class Addsoldier extends javax.swing.JFrame {
     }//GEN-LAST:event_trainingidKeyTyped
 
     private void addsoldier1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addsoldier1ActionPerformed
- try {
+if(id.getText().equals("")){JOptionPane.showMessageDialog(null, "Please enter id");}else{ try {
                 Connection con = null;
                 try {
                     con = DbManager.getConnection();
@@ -670,7 +670,7 @@ public class Addsoldier extends javax.swing.JFrame {
                 }
 
                 PreparedStatement ps = con.prepareStatement("INSERT INTO `execute_sanction`(`Sanction_ID`, `Soldier_ID`, "
-                        + "'duration', 'reference','executed','date_Commited','deduction','status')"
+                        + "`duration`, `reference`,`executed`,`date_Commited`,`deduction`,`status`)"
                         + "  VALUES (?,?,?,?,?,?,?,?)");
 
                 String abc = sid.getText();
@@ -694,12 +694,14 @@ public class Addsoldier extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             
-            }
+            }}
+
                 
     }//GEN-LAST:event_addsoldier1ActionPerformed
 
     private void addsoldier2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addsoldier2ActionPerformed
-        try {
+if(id.getText().equals("")){JOptionPane.showMessageDialog(null, "Please enter id");}else{
+    try {
                 Connection con = null;
                 try {
                     con = DbManager.getConnection();
@@ -732,7 +734,7 @@ public class Addsoldier extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             
-            }
+            }}
         
     }//GEN-LAST:event_addsoldier2ActionPerformed
 
