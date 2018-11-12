@@ -37,7 +37,6 @@ public class adduser extends javax.swing.JFrame {
         AddUSer2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("insert user's information");
         setBackground(new java.awt.Color(255, 121, 27));
         setFocusCycleRoot(false);
@@ -138,16 +137,6 @@ public class adduser extends javax.swing.JFrame {
     
         
     private void AddUser(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUser
-       XMLReaderDOM xml = new XMLReaderDOM();
-        try {
-            xml.addUser(txtuser.getText(), "password", PositionCombo.getSelectedItem().toString());
-        } catch (SAXException ex) {
-            Logger.getLogger(adduser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(adduser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (TransformerException ex) {
-            Logger.getLogger(adduser.class.getName()).log(Level.SEVERE, null, ex);
-        }
        
     }//GEN-LAST:event_AddUser
 
@@ -168,7 +157,17 @@ public class adduser extends javax.swing.JFrame {
     }//GEN-LAST:event_AddUSer1AddUser
 
     private void AddUSer2AddUser(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUSer2AddUser
-        // TODO add your handling code here:
+       XMLReaderDOM xml = new XMLReaderDOM();
+        try {
+            xml.addUser(txtuser.getText(), "password", PositionCombo.getSelectedItem().toString());
+        } catch (SAXException ex) {
+            Logger.getLogger(adduser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(adduser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransformerException ex) {
+            Logger.getLogger(adduser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_AddUSer2AddUser
        
     

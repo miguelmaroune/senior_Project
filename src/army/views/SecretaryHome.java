@@ -1,4 +1,3 @@
-
 package army.views;
 
 import army.calendar.CalendarPanel;
@@ -9,24 +8,29 @@ import army.model.User;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import javax.swing.table.DefaultTableModel;
 
 public class SecretaryHome extends javax.swing.JFrame {
 
-      ArrayList<String> DailyTasks = new ArrayList<>();
-    
-    public SecretaryHome() {
-        
-        UserHandler Uhandler = new UserHandler();
-        User user = Uhandler.getCurrUser();
-        String username = user.getUsername();
-        Connection con = null;
-       
-        
+    ArrayList<String> DailyTasks = new ArrayList<>();
+    private Vector<Vector<String>> meetings = new Vector<>();
+    private UserHandler Uhandler;
+    private User user;
+    private String username;
+    private Connection con;
+
+   public SecretaryHome() {
+
+        Uhandler = new UserHandler();
+        user = Uhandler.getCurrUser();
+        username = user.getUsername();
+        con = null;
+
 //        for testing 
-//        String username = "123456";
+//         username = "123456";
         try {
             if (con == null) {
                 con = DbManager.getConnection();
@@ -38,6 +42,7 @@ public class SecretaryHome extends javax.swing.JFrame {
 
         try {
             DailyTasks = Uhandler.dailyTasks(con, username);
+            meetings = Uhandler.Secretary_meeting(con, username);
         } catch (SQLException ex) {
             Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -46,7 +51,6 @@ public class SecretaryHome extends javax.swing.JFrame {
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -86,7 +90,6 @@ public class SecretaryHome extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome back Secretary !");
         setResizable(false);
         getContentPane().setLayout(null);
@@ -125,21 +128,27 @@ public class SecretaryHome extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Meeting Id", "Subject", "Status", "Date"
+                "Meeting Id", "Military id", "Subject", "Status", "Date"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
+        setMeetingTbl() ;
 
         jPanel3.add(jScrollPane2);
         jScrollPane2.setBounds(20, 420, 670, 90);
 
         jButton1.setText("Set Meeting Date");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1);
         jButton1.setBounds(530, 520, 150, 23);
 
@@ -179,6 +188,11 @@ public class SecretaryHome extends javax.swing.JFrame {
         jButton4.setBounds(20, 340, 80, 23);
 
         jButton5.setText("Set Meeting Status");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton5);
         jButton5.setBounds(350, 520, 150, 23);
 
@@ -196,7 +210,7 @@ public class SecretaryHome extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel3.add(jLabel3);
-        jLabel3.setBounds(0, 0, 700, 540);
+        jLabel3.setBounds(10, -10, 700, 540);
 
         getContentPane().add(jPanel3);
         jPanel3.setBounds(0, 0, 700, 550);
@@ -289,36 +303,77 @@ public class SecretaryHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-   new Request_meeting().setVisible(true);        
+        new Request_meeting().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-new View_profile().setVisible(true);
+        new View_profile().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-new Check_meetings_history().setVisible(true); 
+        new Check_meetings_history().setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
- new CalendarPanelTest().setVisible(true);      
+        new CalendarPanelTest().setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-new search().setVisible(true);
+        new search().setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-       new Addsoldier().setVisible(true);
+        new Addsoldier().setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
-    
-    
-  
-   public static void main(String args[]) {
-     
-  new SecretaryHome().setVisible(true);
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        Vector<String> v = new Vector<>();
+        v = (Vector<String>) model.getDataVector().elementAt(jTable2.getSelectedRow());
+        try {
+            if (con == null) {
+                con = DbManager.getConnection();
             }
+        } catch (Exception ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);            
+        }
+
+        try {
+            Uhandler.update_meeting_status(v, con, username);
+        } catch (SQLException ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DbManager.CloseConnection();
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+               // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        Vector<String> v = new Vector<>();
+        v = (Vector<String>) model.getDataVector().elementAt(jTable2.getSelectedRow());
+        try {
+            if (con == null) {
+                con = DbManager.getConnection();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);            
+        }
+
+        try {
+            Uhandler.update_meeting_Date(v, con, username);
+        } catch (SQLException ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DbManager.CloseConnection();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public static void main(String args[]) {
+
+        new SecretaryHome().setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -356,4 +411,20 @@ new search().setVisible(true);
     private javax.swing.JTable jTable3;
     private javax.swing.JMenu meeting;
     // End of variables declaration//GEN-END:variables
+
+    public void setMeetingTbl() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        for (Vector<String> v : meetings) {
+// "Meeting Id", "Subject", "Status", "Date"       
+            String Meeting_ID = v.get(0);
+            String Military_ID = v.get(1);
+            String Subject = v.get(2);
+            String Status = v.get(3);
+            String Date = v.get(4);
+
+            model.addRow(new Object[]{Meeting_ID, Military_ID,Subject, Status, Date});
+        }
+
+    }
 }

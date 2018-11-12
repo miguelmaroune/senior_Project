@@ -2,7 +2,6 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="&#x644;&#x627;&#x626;&#x62d;&#x629; &#x627;&#x644;&#x62c;&#x647;&#x648;&#x632; &#x648;&#x627;&#x644;&#x645;&#x647;&#x645;&#x627;&#x62a;"/>
   </Properties>
   <SyntheticProperties>

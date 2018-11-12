@@ -29,7 +29,6 @@ public class Search_cl extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
@@ -42,17 +41,11 @@ public class Search_cl extends javax.swing.JFrame {
         cb1 = new javax.swing.JComboBox<>();
         cb6 = new javax.swing.JComboBox<>();
         t1 = new javax.swing.JTextField();
-        cb7 = new javax.swing.JComboBox<>();
-        t2 = new javax.swing.JTextField();
-        t7 = new javax.swing.JTextField();
-        cb2 = new javax.swing.JComboBox<>();
-        cb3 = new javax.swing.JComboBox<>();
-        t3 = new javax.swing.JTextField();
         t4 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -61,10 +54,6 @@ public class Search_cl extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/magnifier.png"))); // NOI18N
         jPanel1.add(jButton1);
         jButton1.setBounds(830, 10, 105, 100);
-
-        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(1035, 10, 100, 100);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,17 +73,17 @@ public class Search_cl extends javax.swing.JFrame {
 
         jButton2.setText("Edit");
         jPanel1.add(jButton2);
-        jButton2.setBounds(940, 10, 90, 40);
+        jButton2.setBounds(990, 10, 90, 40);
 
         jButton3.setText("Archive");
         jPanel1.add(jButton3);
-        jButton3.setBounds(940, 63, 90, 40);
+        jButton3.setBounds(990, 70, 90, 40);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cb4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Training Id" }));
-        jPanel2.add(cb4, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 18, 90, 20));
+        jPanel2.add(cb4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 90, 20));
 
         cb5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Driving ID" }));
@@ -103,37 +92,26 @@ public class Search_cl extends javax.swing.JFrame {
                 cb5ActionPerformed(evt);
             }
         });
-        jPanel2.add(cb5, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 18, 100, 20));
-        jPanel2.add(t5, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 49, 100, 30));
-        jPanel2.add(t6, new org.netbeans.lib.awtextra.AbsoluteConstraints(592, 49, 100, 30));
+        jPanel2.add(cb5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 100, 20));
+        jPanel2.add(t5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, 100, -1));
+        jPanel2.add(t6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, 100, 20));
 
         cb1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id ", "First Name", "Last Name", "Rank", "Blood Type", "Training id", "Date of birth", "Platoon Id", "Driving license" }));
-        jPanel2.add(cb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 18, -1, 20));
+        cb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id ", "First Name", "Last Name", "Rank", "Blood Type", " " }));
+        jPanel2.add(cb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 110, 20));
 
         cb6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sanction ID" }));
-        jPanel2.add(cb6, new org.netbeans.lib.awtextra.AbsoluteConstraints(592, 18, 100, 20));
-        jPanel2.add(t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 49, 114, 30));
+        jPanel2.add(cb6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 100, 20));
+        jPanel2.add(t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 114, 20));
+        jPanel2.add(t4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 90, 20));
 
-        cb7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cb7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rest LIst" }));
-        jPanel2.add(cb7, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 18, 100, 20));
-        jPanel2.add(t2, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 49, 114, 30));
-        jPanel2.add(t7, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 49, 100, 30));
-
-        cb2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cb2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id ", "First Name", "Last Name", "Rank", "Blood Type", "Training id", "Date of birth", "Platoon Id", "Driving license" }));
-        jPanel2.add(cb2, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 18, -1, 20));
-
-        cb3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cb3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id ", "First Name", "Last Name", "Rank", "Blood Type", "Training id", "Date of birth", "Platoon Id", "Driving license" }));
-        jPanel2.add(cb3, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 18, -1, 20));
-        jPanel2.add(t3, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 49, 114, 30));
-        jPanel2.add(t4, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 49, 90, 30));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel4.setText("Please choose the criteria");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 90));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 820, 110));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 810, 110));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(10, 20, 810, 90);
@@ -189,28 +167,22 @@ public class Search_cl extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb1;
-    private javax.swing.JComboBox<String> cb2;
-    private javax.swing.JComboBox<String> cb3;
     private javax.swing.JComboBox<String> cb4;
     private javax.swing.JComboBox<String> cb5;
     private javax.swing.JComboBox<String> cb6;
-    private javax.swing.JComboBox<String> cb7;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField t1;
-    private javax.swing.JTextField t2;
-    private javax.swing.JTextField t3;
     private javax.swing.JTextField t4;
     private javax.swing.JTextField t5;
     private javax.swing.JTextField t6;
-    private javax.swing.JTextField t7;
     // End of variables declaration//GEN-END:variables
 }

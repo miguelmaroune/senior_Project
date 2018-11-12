@@ -84,7 +84,6 @@ public class Haras extends javax.swing.JFrame {
         ));
         jScrollPane9.setViewportView(jTable9);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ورقة الحرس");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

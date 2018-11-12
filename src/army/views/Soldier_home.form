@@ -85,7 +85,6 @@
     </Menu>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Welcome back soldier!"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>

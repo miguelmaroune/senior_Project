@@ -37,7 +37,6 @@ public class Listjouhouz extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("لائحة الجهوز والمهمات");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 public class View_profile extends javax.swing.JFrame {
@@ -18,6 +19,7 @@ public class View_profile extends javax.swing.JFrame {
     private Vector<Vector<String>> sanctions = new Vector<>();
 
     public View_profile() {
+        ImageIcon img ;
         UserHandler Uhandler = new UserHandler();
         User user = Uhandler.getCurrUser();
         Connection con = null;
@@ -64,13 +66,11 @@ public class View_profile extends javax.swing.JFrame {
         jTable4 = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Resume");
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/military-zombie-clipart-vector_csp37053755.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setIcon((ImageIcon) general_info.get(10));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(20, 10, 103, 117);
 
@@ -204,7 +204,7 @@ public class View_profile extends javax.swing.JFrame {
     public void setGenInfo() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-
+         
 //        SELECT Soldier_Id , Platoon_Id , First_Name , Last_Name , "
 //                    + "  Phone_Number , Rank , Position , Available ,DOB ,"
 //                    + "  Blood_Type

@@ -44,7 +44,6 @@ public class Tasks extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Manage Tasks");
         getContentPane().setLayout(null);
         getContentPane().add(jTextField1);

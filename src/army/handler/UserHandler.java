@@ -14,6 +14,27 @@ import java.util.logging.Logger;
 
 public class UserHandler {
 
+    public static void update_meeting_status(Vector<String> v, Connection connection, String CurrentUser) throws SQLException {
+//        "UPDATE meeting SET Meeting_Status = "+ v.get(3)+" WHERE Id_Meeting = "+v.get(0)  ;
+      
+        try {
+            String query = "UPDATE meeting SET Meeting_Status = ? WHERE Id_Meeting = ? "  ;
+                    
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, v.get(3));
+            preparedStmt.setString(2, v.get(0));
+            
+            // execute the preparedstatement
+            preparedStmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 //    the username must be the soldierID 
     public User getCurrUser() {
         User CurrentUser = User.getinstance();
@@ -105,7 +126,7 @@ public class UserHandler {
 
                 dailyTask.add(rs.getString("Description") + ";" + rs.getString("Reference"));
 
-            }
+            } 
 
         } catch (SQLException ex) {
             Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -143,8 +164,9 @@ public class UserHandler {
             String query = "SELECT Id_Meeting,Meeting_Subject,Meeting_Status ,COALESCE(NULLIF(Meeting_Date, ''), 'NOT SET') "
                     + "AS Meeting_Date  "
                     + "FROM meeting"
-                    + " where Soldier_Id = " + CurrentUser;
-//               
+                    + " where Soldier_Id = " + CurrentUser
+                    +" AND Meeting_Status IN('Pending Date_NotSet','Pending Date_Set')";
+                     
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
 
@@ -198,7 +220,7 @@ public class UserHandler {
         try {
             String query = "SELECT Soldier_Id , Platoon_Id , First_Name , Last_Name , "
                     + "  Phone_Number , Rank , Position , Available ,DOB ,"
-                    + "  Blood_Type "
+                    + "  Blood_Type , image "
                     + " FROM soldier "
                     + " WHERE Soldier_Id = " + CurrentUser;
 //               
@@ -216,6 +238,7 @@ public class UserHandler {
                 prof.add(rs.getInt("Available"));
                 prof.add(rs.getString("DOB"));
                 prof.add(rs.getString("Blood_Type"));
+                prof.add(rs.getBlob("image"));
             }
 
         } catch (SQLException ex) {
@@ -326,4 +349,84 @@ public class UserHandler {
         }
         return chk;
     }
+
+     
+
+    public Vector<Vector<String>> Secretary_meeting(Connection connection, String CurrentUser) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+//        
+
+        try {
+            String query = "SELECT Id_Meeting,Soldier_id,Meeting_Subject,Meeting_Status ,COALESCE(NULLIF(Meeting_Date, ''), 'NOT SET') "
+                    + "AS Meeting_Date  "
+                    + " FROM meeting "
+                    + " WHERE Meeting_Status <> 'Accomplished'"
+                    + " AND Meeting_Status <> 'canceled'";
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Id_Meeting"));
+                day.add(rs.getString("Soldier_id"));
+                day.add(rs.getString("Meeting_Subject"));
+                day.add(rs.getString("Meeting_Status"));
+                day.add(rs.getString("Meeting_Date"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
+
+    public void update_meeting_Date(Vector<String> v, Connection con, String username) throws SQLException {
+   try {
+            String query = "UPDATE meeting SET Meeting_Date = ? WHERE Id_Meeting = ? "  ;
+                    
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setString(1, v.get(4));
+            preparedStmt.setString(2, v.get(0));
+            
+            // execute the preparedstatement
+            preparedStmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+     
+    public static void update_meeting_Result(Vector<String> v, Connection connection, String CurrentUser) throws SQLException {
+//        "UPDATE meeting SET Meeting_result = "+ v.get(5)+" WHERE Id_Meeting = "+v.get(0)  ;
+      
+        try {
+            String query = "UPDATE meeting SET Meeting_Result = ? WHERE Id_Meeting = ? "  ;
+                    
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, v.get(5));
+            preparedStmt.setString(2, v.get(0));
+            
+            // execute the preparedstatement
+            preparedStmt.executeUpdate();
+ 
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    
+    
+    
 }
+
+
+ 

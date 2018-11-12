@@ -61,7 +61,6 @@ public class Sanction_paper extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jTextField19 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("قانونية,عادلة,شخصية,رادعة,فورية");
         setResizable(false);
 

@@ -31,7 +31,6 @@ public class Request_meeting extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 0, 0));
         jButton1.setText("Cancel");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Please Enter The Subject Of The Meeting...");
         setResizable(false);
         getContentPane().setLayout(null);

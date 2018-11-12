@@ -65,7 +65,6 @@ public class Workdays extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Manage Workdays");
         setResizable(false);
         getContentPane().setLayout(null);

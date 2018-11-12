@@ -22,7 +22,6 @@ public class cl_meetinghistory extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("History of Meetings");
         setResizable(false);
         getContentPane().setLayout(null);

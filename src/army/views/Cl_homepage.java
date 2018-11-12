@@ -10,20 +10,26 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 
 public class Cl_homepage extends javax.swing.JFrame {
 
-      ArrayList<String> DailyTasks = new ArrayList<>();
+     ArrayList<String> DailyTasks = new ArrayList<>();
+    private Vector<Vector<String>> meetings = new Vector<>();
+    private UserHandler Uhandler;
+    private User user;
+    private String username;
+    private Connection con;
     
     public Cl_homepage() {
-        
-        UserHandler Uhandler = new UserHandler();
+         Uhandler = new UserHandler();
         User user = Uhandler.getCurrUser();
-        String username = user.getUsername();
-        Connection con = null;
+         username = user.getUsername();
+       con = null;
        
         
 //        for testing 
@@ -38,13 +44,19 @@ public class Cl_homepage extends javax.swing.JFrame {
         }
 
         try {
+            
             DailyTasks = Uhandler.dailyTasks(con, username);
+            meetings = Uhandler.Secretary_meeting(con, username);
         } catch (SQLException ex) {
             Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             DbManager.CloseConnection();
         }
         initComponents();
+setMeetingTbl();
+        
+        
+        
     }
 
     
@@ -57,11 +69,11 @@ public class Cl_homepage extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         meeting = new javax.swing.JMenu();
@@ -89,7 +101,6 @@ public class Cl_homepage extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome back Captain !");
         setResizable(false);
         getContentPane().setLayout(null);
@@ -126,33 +137,48 @@ public class Cl_homepage extends javax.swing.JFrame {
         jPanel3.add(jLabel2);
         jLabel2.setBounds(110, 20, 500, 25);
 
+        jButton1.setText("Set Meeting result");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1);
+        jButton1.setBounds(190, 340, 150, 23);
+
+        jButton5.setText("Set Meeting Status");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton5);
+        jButton5.setBounds(360, 340, 150, 23);
+
+        jButton4.setText("Set Meeting Date");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton4);
+        jButton4.setBounds(540, 340, 150, 23);
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Meeting Id", "Subject", "Status", "Date", "Result"
+                "Meeting Id", "Military id", "Subject", "Status", "Date", "Result"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
 
         jPanel3.add(jScrollPane2);
         jScrollPane2.setBounds(20, 230, 670, 90);
-
-        jButton1.setText("Set Meeting result");
-        jPanel3.add(jButton1);
-        jButton1.setBounds(190, 340, 150, 23);
-
-        jButton2.setText("Set Meeting Date");
-        jPanel3.add(jButton2);
-        jButton2.setBounds(530, 340, 150, 23);
-
-        jButton3.setText("Set Meeting Status");
-        jPanel3.add(jButton3);
-        jButton3.setBounds(360, 340, 150, 23);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel3.add(jLabel3);
@@ -369,6 +395,70 @@ new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
         new Workdays().setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();        Vector<String> v = new Vector<>();
+
+        v = (Vector<String>) model.getDataVector().elementAt(jTable2.getSelectedRow());
+        try {
+            if (con == null) {
+                con = DbManager.getConnection();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            Uhandler.update_meeting_status(v, con, username);
+        } catch (SQLException ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DbManager.CloseConnection();
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        Vector<String> v = new Vector<>();
+        v = (Vector<String>) model.getDataVector().elementAt(jTable2.getSelectedRow());
+        try {
+            if (con == null) {
+                con = DbManager.getConnection();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            Uhandler.update_meeting_Date(v, con, username);
+        } catch (SQLException ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DbManager.CloseConnection();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+  DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        Vector<String> v = new Vector<>();
+        v = (Vector<String>) model.getDataVector().elementAt(jTable2.getSelectedRow());
+        try {
+            if (con == null) {
+                con = DbManager.getConnection();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            Uhandler.update_meeting_Result(v, con, username);
+        } catch (SQLException ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DbManager.CloseConnection();
+        }    }//GEN-LAST:event_jButton1ActionPerformed
+
     
     
   
@@ -379,8 +469,8 @@ new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -415,4 +505,22 @@ new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
     private javax.swing.JTable jTable2;
     private javax.swing.JMenu meeting;
     // End of variables declaration//GEN-END:variables
+
+ 
+public void setMeetingTbl() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        for (Vector<String> v : meetings) {
+// "Meeting Id", "Subject", "Status", "Date"       
+            String Meeting_ID = v.get(0);
+            String Military_ID = v.get(1);
+            String Subject = v.get(2);
+            String Status = v.get(3);
+            String Date = v.get(4);
+
+            model.addRow(new Object[]{Meeting_ID, Military_ID,Subject, Status, Date});
+        }
+
+    }
+
 }

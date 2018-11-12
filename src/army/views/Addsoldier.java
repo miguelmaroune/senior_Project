@@ -67,7 +67,6 @@ public class Addsoldier extends javax.swing.JFrame {
         ln1 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         platoonid13 = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
         platoonid14 = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         platoonid15 = new javax.swing.JTextField();
@@ -86,7 +85,6 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        inpum = new javax.swing.JFormattedTextField();
         dob = new com.toedter.calendar.JDateChooser();
         fn2 = new javax.swing.JTextField();
         bimage = new javax.swing.JLabel();
@@ -154,37 +152,37 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel1.setText("ID :");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 160, 20, 19);
+        jLabel1.setBounds(10, 160, 20, 15);
 
         jLabel2.setBackground(new java.awt.Color(204, 255, 255));
         jLabel2.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel2.setText("FIRST NAME :");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 180, 90, 19);
+        jLabel2.setBounds(10, 180, 90, 15);
 
         jLabel3.setBackground(new java.awt.Color(204, 255, 255));
         jLabel3.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel3.setText("RANK :");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 220, 50, 19);
+        jLabel3.setBounds(10, 220, 50, 15);
 
         jLabel4.setBackground(new java.awt.Color(204, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel4.setText("LAST NAME :");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 200, 80, 19);
+        jLabel4.setBounds(10, 200, 80, 15);
 
         jLabel5.setBackground(new java.awt.Color(204, 255, 255));
         jLabel5.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel5.setText("PLATOON ID :");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(10, 260, 91, 19);
+        jLabel5.setBounds(10, 260, 74, 15);
 
         jLabel6.setBackground(new java.awt.Color(204, 255, 255));
         jLabel6.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel6.setText("UNIT :");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(10, 240, 40, 19);
+        jLabel6.setBounds(10, 240, 40, 15);
 
         id.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         id.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -224,7 +222,7 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel7.setText("DOB:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(10, 280, 50, 19);
+        jLabel7.setBounds(10, 280, 50, 15);
 
         bloodtype.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(bloodtype);
@@ -234,7 +232,7 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel8.setText("BLOOD TYPE :");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(10, 300, 80, 19);
+        jLabel8.setBounds(10, 300, 80, 15);
 
         drivinglicense.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(drivinglicense);
@@ -244,7 +242,7 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel9.setText("DRIVING_LICENSE :");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(10, 320, 110, 19);
+        jLabel9.setBounds(10, 320, 110, 15);
 
         position.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(position);
@@ -254,7 +252,7 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel10.setText("POSITION :");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(250, 20, 70, 19);
+        jLabel10.setBounds(250, 20, 70, 15);
 
         trainingid.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         trainingid.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -273,13 +271,13 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel13.setText("PHONE # :");
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(250, 40, 60, 19);
+        jLabel13.setBounds(250, 40, 60, 15);
 
         TRAINING_ID.setBackground(new java.awt.Color(204, 255, 255));
         TRAINING_ID.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         TRAINING_ID.setText("Training id :");
         jPanel1.add(TRAINING_ID);
-        TRAINING_ID.setBounds(250, 100, 90, 19);
+        TRAINING_ID.setBounds(250, 100, 90, 15);
 
         id1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         id1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -315,17 +313,11 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel17.setText("Training end date :");
         jPanel1.add(jLabel17);
-        jLabel17.setBounds(250, 140, 120, 19);
+        jLabel17.setBounds(250, 140, 120, 15);
 
         platoonid13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(platoonid13);
         platoonid13.setBounds(390, 200, 140, 20);
-
-        jLabel18.setBackground(new java.awt.Color(204, 255, 255));
-        jLabel18.setFont(new java.awt.Font("Tekton Pro", 0, 18)); // NOI18N
-        jLabel18.setText("?????????/");
-        jPanel1.add(jLabel18);
-        jLabel18.setBounds(210, 440, 70, 24);
 
         platoonid14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(platoonid14);
@@ -335,7 +327,7 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel19.setText("Sanction duration :");
         jPanel1.add(jLabel19);
-        jLabel19.setBounds(250, 220, 120, 19);
+        jLabel19.setBounds(250, 220, 120, 15);
 
         platoonid15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(platoonid15);
@@ -345,19 +337,19 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel20.setText("Sanction reference :");
         jPanel1.add(jLabel20);
-        jLabel20.setBounds(250, 240, 130, 19);
+        jLabel20.setBounds(250, 240, 130, 15);
 
         jLabel22.setBackground(new java.awt.Color(204, 255, 255));
         jLabel22.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel22.setText("WEIGHT:");
         jPanel1.add(jLabel22);
-        jLabel22.setBounds(250, 60, 50, 19);
+        jLabel22.setBounds(250, 60, 50, 15);
 
         jLabel23.setBackground(new java.awt.Color(204, 255, 255));
         jLabel23.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel23.setText("HEIGHT :");
         jPanel1.add(jLabel23);
-        jLabel23.setBounds(250, 80, 50, 19);
+        jLabel23.setBounds(250, 80, 50, 15);
         jPanel1.add(dob1);
         dob1.setBounds(390, 140, 139, 20);
         jPanel1.add(dob2);
@@ -371,7 +363,7 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel25.setText("Training start date :");
         jPanel1.add(jLabel25);
-        jLabel25.setBounds(250, 120, 130, 19);
+        jLabel25.setBounds(250, 120, 130, 15);
 
         platoonid18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(platoonid18);
@@ -381,45 +373,43 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel26.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel26.setText("Sanction  Id : ");
         jPanel1.add(jLabel26);
-        jLabel26.setBounds(250, 200, 100, 19);
+        jLabel26.setBounds(250, 200, 100, 15);
 
         jLabel27.setBackground(new java.awt.Color(204, 255, 255));
         jLabel27.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel27.setText("Sanction status :");
         jPanel1.add(jLabel27);
-        jLabel27.setBounds(250, 300, 140, 19);
+        jLabel27.setBounds(250, 300, 140, 15);
 
         jLabel28.setBackground(new java.awt.Color(204, 255, 255));
         jLabel28.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel28.setText("Training reference : ");
         jPanel1.add(jLabel28);
-        jLabel28.setBounds(250, 160, 130, 19);
+        jLabel28.setBounds(250, 160, 130, 15);
 
         jLabel29.setBackground(new java.awt.Color(204, 255, 255));
         jLabel29.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel29.setText("Training location :");
         jPanel1.add(jLabel29);
-        jLabel29.setBounds(250, 180, 100, 19);
+        jLabel29.setBounds(250, 180, 100, 15);
 
         jLabel30.setBackground(new java.awt.Color(204, 255, 255));
         jLabel30.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel30.setText("Executed :");
         jPanel1.add(jLabel30);
-        jLabel30.setBounds(250, 260, 60, 19);
+        jLabel30.setBounds(250, 260, 60, 15);
 
         jLabel31.setBackground(new java.awt.Color(204, 255, 255));
         jLabel31.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel31.setText("Date of commitment :");
         jPanel1.add(jLabel31);
-        jLabel31.setBounds(250, 280, 140, 19);
+        jLabel31.setBounds(250, 280, 140, 15);
 
         jLabel32.setBackground(new java.awt.Color(204, 255, 255));
         jLabel32.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel32.setText("Deduction :");
         jPanel1.add(jLabel32);
-        jLabel32.setBounds(250, 320, 140, 19);
-        jPanel1.add(inpum);
-        inpum.setBounds(70, 460, 6, 20);
+        jLabel32.setBounds(250, 320, 140, 15);
         jPanel1.add(dob);
         dob.setBounds(100, 280, 110, 20);
 
@@ -452,55 +442,55 @@ public class Addsoldier extends javax.swing.JFrame {
         TRAINING_ID1.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         TRAINING_ID1.setText("Driving license :");
         jPanel1.add(TRAINING_ID1);
-        TRAINING_ID1.setBounds(560, 20, 90, 19);
+        TRAINING_ID1.setBounds(560, 20, 90, 15);
 
         jLabel33.setBackground(new java.awt.Color(204, 255, 255));
         jLabel33.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel33.setText(" Rest Start date :");
         jPanel1.add(jLabel33);
-        jLabel33.setBounds(560, 180, 130, 19);
+        jLabel33.setBounds(560, 180, 130, 15);
 
         jLabel21.setBackground(new java.awt.Color(204, 255, 255));
         jLabel21.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel21.setText(" Rest End date :");
         jPanel1.add(jLabel21);
-        jLabel21.setBounds(560, 200, 120, 19);
+        jLabel21.setBounds(560, 200, 120, 15);
 
         jLabel34.setBackground(new java.awt.Color(204, 255, 255));
         jLabel34.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel34.setText("Driving reference :");
         jPanel1.add(jLabel34);
-        jLabel34.setBounds(560, 80, 130, 19);
+        jLabel34.setBounds(560, 80, 130, 15);
 
         jLabel35.setBackground(new java.awt.Color(204, 255, 255));
         jLabel35.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel35.setText("Driving location :");
         jPanel1.add(jLabel35);
-        jLabel35.setBounds(560, 100, 100, 19);
+        jLabel35.setBounds(560, 100, 100, 15);
 
         jLabel36.setBackground(new java.awt.Color(204, 255, 255));
         jLabel36.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel36.setText("Rest reference :");
         jPanel1.add(jLabel36);
-        jLabel36.setBounds(560, 120, 100, 19);
+        jLabel36.setBounds(560, 120, 100, 15);
 
         jLabel24.setBackground(new java.awt.Color(204, 255, 255));
         jLabel24.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel24.setText("Rest type :");
         jPanel1.add(jLabel24);
-        jLabel24.setBounds(560, 140, 120, 19);
+        jLabel24.setBounds(560, 140, 120, 15);
 
         jLabel37.setBackground(new java.awt.Color(204, 255, 255));
         jLabel37.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel37.setText("Rest cause :");
         jPanel1.add(jLabel37);
-        jLabel37.setBounds(560, 160, 130, 19);
+        jLabel37.setBounds(560, 160, 130, 15);
 
         jLabel41.setBackground(new java.awt.Color(204, 255, 255));
         jLabel41.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel41.setText("Picture :");
         jPanel1.add(jLabel41);
-        jLabel41.setBounds(10, 50, 60, 19);
+        jLabel41.setBounds(10, 50, 60, 15);
 
         platoonid23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(platoonid23);
@@ -538,19 +528,21 @@ public class Addsoldier extends javax.swing.JFrame {
         jLabel43.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel43.setText("Driving Start date :");
         jPanel1.add(jLabel43);
-        jLabel43.setBounds(560, 40, 130, 19);
+        jLabel43.setBounds(560, 40, 130, 15);
 
         jLabel44.setBackground(new java.awt.Color(204, 255, 255));
         jLabel44.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
         jLabel44.setText(" Driving End date :");
         jPanel1.add(jLabel44);
-        jLabel44.setBounds(560, 60, 120, 19);
+        jLabel44.setBounds(560, 60, 120, 15);
 
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/qqqqq.jpg"))); // NOI18N
         jLabel11.setOpaque(true);
         jPanel1.add(jLabel11);
         jLabel11.setBounds(0, 290, 900, 220);
 
         jLabel12.setBackground(new java.awt.Color(204, 255, 204));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Untitledcolor.png"))); // NOI18N
         jLabel12.setOpaque(true);
         jPanel1.add(jLabel12);
         jLabel12.setBounds(0, 0, 900, 330);
@@ -624,26 +616,25 @@ public class Addsoldier extends javax.swing.JFrame {
                     Logger.getLogger(Addsoldier.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                PreparedStatement ps = con.prepareStatement("INSERT INTO `soldier`(`soldier_id`,`first_name`,`rank`,`unit`,`platoon_id`,`position`,`driving_license`,`training_id`,`dob`,image,last_name)"
-                        + " VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+                PreparedStatement ps = con.prepareStatement("INSERT INTO `soldier`(`Soldier_Id`,`Platoon_Id`,`First_Name`,`Last_Name`,`Phone_Number`,`Rank`,`Position`,`DOB`,image)"
+                        + " VALUES (?,?,?,?,?,?,?,?,?)");
 
                 String abc = id.getText();
                 ps.setInt(1, Integer.parseInt(abc));
-                ps.setString(2, fn.getText());
-                ps.setString(3, rank.getText());
-                ps.setString(4, unit.getText());
                 String ghi = platoonid.getText();
-                ps.setInt(5, Integer.valueOf(ghi));
-                ps.setString(6, position.getText());
-                ps.setString(7, drivinglicense.getText());
+                ps.setInt(2, Integer.valueOf(ghi));
+                ps.setString(3, fn.getText());
+                ps.setString(4, ln.getText());
                 String def = trainingid.getText();
-                ps.setInt(8, Integer.valueOf(def));
+                ps.setInt(5, Integer.valueOf(def));                                
+                ps.setString(6, rank.getText());
+                ps.setString(7, position.getText());
                 SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
                 String adddate = dateformat.format(dob.getDate());
-                ps.setString(9, adddate);
+                ps.setString(8, adddate);
                 InputStream img = new FileInputStream(new File(imgpath));
-                ps.setBlob(10, img);
-                ps.setString(11, ln.getText());
+                ps.setBlob(9, img);
+               
 
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "added");
@@ -724,7 +715,6 @@ public class Addsoldier extends javax.swing.JFrame {
     static javax.swing.JTextField fn2;
     static javax.swing.JTextField id;
     static javax.swing.JTextField id1;
-    private javax.swing.JFormattedTextField inpum;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -732,7 +722,6 @@ public class Addsoldier extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
