@@ -19,14 +19,13 @@ import javax.swing.table.DefaultTableModel;
 public class Soldier_home extends javax.swing.JFrame {
 
     private Vector<Vector<String>> meetings = new Vector<>();
-
+    private Vector<Vector<String>> tasks = new Vector<>();
     public Soldier_home() {
         UserHandler Uhandler = new UserHandler();
         User user = Uhandler.getCurrUser();
         Connection con = null;
         String username = user.getUsername();
-//        for testing 
-//        String username = "123456";
+
         try {
             if (con == null) {
                 con = DbManager.getConnection();
@@ -36,6 +35,15 @@ public class Soldier_home extends javax.swing.JFrame {
         }
 
         try {
+            tasks = Uhandler.check_task(con, username);
+        } catch (SQLException ex) {
+            Logger.getLogger(Soldier_home.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DbManager.CloseConnection();
+        }
+        
+        
+        try {
             meetings = Uhandler.check_meeting(con, username);
         } catch (SQLException ex) {
             Logger.getLogger(Soldier_home.class.getName()).log(Level.SEVERE, null, ex);
@@ -43,6 +51,7 @@ public class Soldier_home extends javax.swing.JFrame {
             DbManager.CloseConnection();
         }
         initComponents();
+        settaskTbl();
     }
 
     @SuppressWarnings("unchecked")
@@ -96,7 +105,7 @@ public class Soldier_home extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Assignment Id", "Task ", "Status", "Date", "Reference", "Task report", "Task highlights"
+                "Assignment_Id", "Task ", "Status", "Date", "Reference", "Task report", "Task highlights"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -202,14 +211,7 @@ public class Soldier_home extends javax.swing.JFrame {
         new CalendarPanelTest().setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-//    public static void main(String args[]) {
-//
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Soldier_home().setVisible(true);
-//            }
-//        });
-//    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -245,4 +247,22 @@ public  void setMeetingTbl() {
         }
 
     }
+
+public  void settaskTbl() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (Vector<String> v : tasks) {
+// "ass Id", "task id", "Status", "Date",reference,task report ,task highlitght       
+            String Assignment_id = v.get(0);
+            String Task = v.get(1);
+            String Status = v.get(2);
+            String Date = v.get(3);
+            String Reference = v.get(4);
+            String Report = v.get(5);
+            String Highlights = v.get(6);
+            model.addRow(new Object[]{Assignment_id, Task, Status, Date, Reference, Report,Highlights});
+        }
+
+    }
+
 }

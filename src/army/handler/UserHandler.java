@@ -481,7 +481,39 @@ public class UserHandler {
         return chk;
     }
     
-    
+     public Vector<Vector<String>> check_task(Connection connection, String CurrentUser) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+        try {
+            String query = "SELECT Assignement_id,Task_Id,Status,Reference,report,highlights,`Date_Assigned`\n" +
+"                   \n" +
+"                   FROM assigned_task\n" +
+"                   where Soldier_Id =" +CurrentUser+
+"                     AND  Date_Assigned = CURDATE() " +
+"                     AND Status IN('unfinished')";
+                     
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Assignement_id"));
+                day.add(rs.getString("Task_Id"));
+                day.add(rs.getString("Status"));
+                day.add(rs.getString("Reference"));
+                day.add(rs.getString("report"));
+                day.add(rs.getString("highlights"));
+                day.add(rs.getString("Date_Assigned"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("test test test :"+ex);
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
 }
 
 

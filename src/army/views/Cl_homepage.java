@@ -32,8 +32,7 @@ public class Cl_homepage extends javax.swing.JFrame {
        con = null;
        
         
-//        for testing 
-//        String username = "123456";
+
         try {
             if (con == null) {
                 con = DbManager.getConnection();
@@ -463,11 +462,7 @@ new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
     
     
   
-    public static void main(String args[]) {
-     
-   new Cl_homepage().setVisible(true);
-           }
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
