@@ -423,7 +423,63 @@ public class UserHandler {
 
     }
     
+    public Vector<Vector<String>> meetings_historyid(Connection connection, String Currentid) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+        try {
+            String query = "SELECT Id_Meeting , Meeting_Subject , Meeting_Status , Meeting_Date , Meeting_Result "
+                    + "FROM meeting "
+                    + "WHERE "
+                    + " id_Meeting = " + Currentid;
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Id_Meeting"));
+                day.add(rs.getString("Meeting_Subject"));
+                day.add(rs.getString("Meeting_Status"));
+                day.add(rs.getString("Meeting_Date"));
+                day.add(rs.getString("Meeting_Result"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
     
+    
+    public Vector<Vector<String>> meetings_historyall(Connection connection) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+        try {
+            String query = "SELECT Id_Meeting , Meeting_Subject , Meeting_Status , Meeting_Date , Meeting_Result "
+                    + "FROM meeting "
+                    ;
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Id_Meeting"));
+                day.add(rs.getString("Meeting_Subject"));
+                day.add(rs.getString("Meeting_Status"));
+                day.add(rs.getString("Meeting_Date"));
+                day.add(rs.getString("Meeting_Result"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
     
     
 }

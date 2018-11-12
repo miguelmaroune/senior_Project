@@ -133,14 +133,7 @@ String result= (String) cb.getSelectedItem();
           String id=rs.getString("Soldier_Id");
             
             cb.addItem(id);
-            
-           
-            
-        }
-        
-        
-        
-        }catch (Exception e){
+        }        }catch (Exception e){
                 JOptionPane.showMessageDialog(null, e);
         }
     }

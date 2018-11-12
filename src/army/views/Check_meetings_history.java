@@ -84,15 +84,6 @@ public class Check_meetings_history extends javax.swing.JFrame {
         setBounds(0, 0, 861, 431);
     }// </editor-fold>//GEN-END:initComponents
 
-//    public static void main(String args[]) {
-//
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Check_meetings_history().setVisible(true);
-//            }
-//        });
-//    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
