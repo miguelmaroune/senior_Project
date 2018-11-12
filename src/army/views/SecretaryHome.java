@@ -30,7 +30,7 @@ public class SecretaryHome extends javax.swing.JFrame {
         con = null;
 
 //        for testing 
-         username = "123456";
+//         username = "123456";
         try {
             if (con == null) {
                 con = DbManager.getConnection();

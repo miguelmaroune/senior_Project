@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class Soldier_home extends javax.swing.JFrame {
 
-    private Vector<Vector<String>> meetings = new Vector<>();
+    private static Vector<Vector<String>> meetings = new Vector<>();
 
     public Soldier_home() {
         UserHandler Uhandler = new UserHandler();
@@ -56,7 +56,7 @@ public class Soldier_home extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable2 = new   javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -231,8 +231,9 @@ public class Soldier_home extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
-public  void setMeetingTbl() {
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+public   void setMeetingTbl() {
+        DefaultTableModel  model;
+        model = (DefaultTableModel) jTable2.getModel();
         model.setRowCount(0);
         for (Vector<String> v : meetings) {
 // "Meeting Id", "Subject", "Status", "Date"       

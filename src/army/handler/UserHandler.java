@@ -399,4 +399,105 @@ public class UserHandler {
         }
 
     }
+     public Vector<Vector<String>> search(Connection connection, String CurrentUser) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+        try {
+            
+            String query = "SELECT  s.Soldier_Id , First_Name , Last_Name , Rank , DOB , Platoon_Id , Phone_Number , Position , Blood_Type  , "
+                    + "    IFNULL(e.reference , '') as reference , IFNULL(t.description , '') as description "
+                    + " FROM soldier s"
+                    + " LEFT OUTER JOIN execute_sanction e ON s.Soldier_id = e.Soldier_id "
+                    + " LEFT JOIN achieve_training a ON s.Soldier_id = a.Soldier_id "
+                    + " LEFT JOIN TRAINING  t on t.training_Id = a.training_id ";
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Soldier_Id"));
+                day.add(rs.getString("First_Name"));
+                day.add(rs.getString("Last_Name"));
+                day.add(rs.getString("Rank"));
+                day.add(rs.getString("DOB"));
+                day.add(rs.getString("Platoon_Id"));
+                day.add(rs.getString("Phone_Number"));
+                day.add(rs.getString("Position"));
+                day.add(rs.getString("Blood_Type"));
+                day.add(rs.getString("reference"));
+                day.add(rs.getString("description"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
+     
+         public Vector<Vector<String>> search_param(Connection connection, String CurrentUser , String choice , String soldiertbl , String trainingtbl, String sanctiontbl) throws SQLException {
+//
+//String query = "SELECT name,companyname,phone,email"
+//					+ (fuzzyName != null ? ",similarity(name,'"+fuzzyName+"') AS nameSimilarity" : "") 
+//					+ (company != null ? ",similarity(companyname,'"+company+"') AS companySimilarity" : "")
+//					+ " from customer where 1=1 "
+//					+ (fuzzyName != null ? " AND similarity(name,'"+fuzzyName+"') >= " + SettingsManager.customerMatchingSimilarity : "")
+//					+ (company != null ? " AND similarity(companyname,'"+company+"') >= " + SettingsManager.customerMatchingSimilarity : "")
+//					+ " ORDER BY " + getOrderByString(fuzzyName, company) + " Desc limit " + SettingsManager.customerSearchLimit;
+
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+        try {
+            String where_clause = (!soldiertbl.trim().isEmpty()  ? 
+                    "AND S." +choice + " = '"+soldiertbl+"'  ": " ") ;
+            String trn = (!trainingtbl.trim().isEmpty()   ? 
+                    "AND training_id  = '"+trainingtbl+"'  ":
+                    " ");
+                    
+                     
+           String san=  ( !sanctiontbl.trim().isEmpty()  ? 
+                    "AND sanction_id  = '"+sanctiontbl+"'  "
+                     : " ");
+// SELECT  s.Soldier_Id , First_Name , Last_Name , Rank , DOB , Platoon_Id , Phone_Number , Position , Blood_Type  ,     IFNULL(e.reference , '') as reference , IFNULL(t.description , '') as sanction  FROM soldier s LEFT OUTER JOIN execute_sanction e ON s.Soldier_id = e.Soldier_id  LEFT JOIN achieve_training a ON s.Soldier_id = a.Soldier_id
+//LEFT JOIN TRAINING  t on t.training_Id
+//= a.training_id WHERE 1 = 1   AND sanction_id  = '1'             
+//            
+            
+            String query = "SELECT  s.Soldier_Id , First_Name , Last_Name , Rank , DOB , Platoon_Id , Phone_Number , Position , Blood_Type  , "
+                    + "    IFNULL(e.reference , '') as reference , IFNULL(t.description , '') as description "
+                    + " FROM soldier s"
+                    + " LEFT OUTER JOIN execute_sanction e ON s.Soldier_id = e.Soldier_id "
+                    + " LEFT JOIN achieve_training a ON s.Soldier_id = a.Soldier_id "
+                    + " LEFT JOIN TRAINING  t on t.training_Id = a.training_id "
+                    + " WHERE 1 = 1 "
+                    + where_clause
+                    +trn
+                    +san;
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Soldier_Id"));
+                day.add(rs.getString("First_Name"));
+                day.add(rs.getString("Last_Name"));
+                day.add(rs.getString("Rank"));
+                day.add(rs.getString("DOB"));
+                day.add(rs.getString("Platoon_Id"));
+                day.add(rs.getString("Phone_Number"));
+                day.add(rs.getString("Position"));
+                day.add(rs.getString("Blood_Type"));
+                day.add(rs.getString("reference"));
+                day.add(rs.getString("description"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    } 
 }

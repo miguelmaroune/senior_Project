@@ -5,6 +5,17 @@
  */
 package army.views;
 
+import army.calendar.CalendarPanel;
+import army.controller.DbManager;
+import army.handler.UserHandler;
+import army.model.User;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ronyl
@@ -14,7 +25,37 @@ public class Search_cl extends javax.swing.JFrame {
     /**
      * Creates new form Search_cl
      */
+    private UserHandler Uhandler;
+    private User user;
+    private String username;
+    private Connection con;
+
+    private Vector<Vector<String>> search = new Vector<>();
+
     public Search_cl() {
+        Uhandler = new UserHandler();
+        user = Uhandler.getCurrUser();
+        username = user.getUsername();
+        con = null;
+
+//        for testing 
+//         username = "123456";
+        try {
+            if (con == null) {
+                con = DbManager.getConnection();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("adadadadad");
+        }
+
+        try {
+            search = Uhandler.search(con, username);
+        } catch (SQLException ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DbManager.CloseConnection();
+        }
         initComponents();
     }
 
@@ -36,18 +77,10 @@ public class Search_cl extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         cb4 = new javax.swing.JComboBox<>();
-        cb5 = new javax.swing.JComboBox<>();
-        t5 = new javax.swing.JTextField();
         t6 = new javax.swing.JTextField();
         cb1 = new javax.swing.JComboBox<>();
         cb6 = new javax.swing.JComboBox<>();
         t1 = new javax.swing.JTextField();
-        cb7 = new javax.swing.JComboBox<>();
-        t2 = new javax.swing.JTextField();
-        t7 = new javax.swing.JTextField();
-        cb2 = new javax.swing.JComboBox<>();
-        cb3 = new javax.swing.JComboBox<>();
-        t3 = new javax.swing.JTextField();
         t4 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -59,6 +92,11 @@ public class Search_cl extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/magnifier.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(830, 10, 105, 100);
 
@@ -71,12 +109,13 @@ public class Search_cl extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "First name", "Last name", "Rank", "D O B", "Platoon Id", "Phone #", "Position", "Blood type", "Driving license", "Training Id", "Sanction ID", "Rest List"
+                "Id", "First name", "Last name", "Rank", "D O B", "Platoon Id", "Phone #", "Position", "Blood type", "Training Id", "Sanction ID"
             }
         ));
         jTable1.setColumnSelectionAllowed(true);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        search();
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         jPanel1.add(jScrollPane1);
@@ -93,44 +132,20 @@ public class Search_cl extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cb4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cb4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Training Id" }));
-        jPanel2.add(cb4, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 18, 90, 20));
-
-        cb5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cb5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Driving ID" }));
-        cb5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb5ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(cb5, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 18, 100, 20));
-        jPanel2.add(t5, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 49, 100, 30));
-        jPanel2.add(t6, new org.netbeans.lib.awtextra.AbsoluteConstraints(592, 49, 100, 30));
+        cb4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Training Id ," }));
+        cb4.setToolTipText("");
+        jPanel2.add(cb4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 90, 20));
+        jPanel2.add(t6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 100, 30));
 
         cb1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id ", "First Name", "Last Name", "Rank", "Blood Type", "Training id", "Date of birth", "Platoon Id", "Driving license" }));
+        cb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soldier_Id", "First_Name", "Last_Name", "Rank", "Blood_Type", " " }));
         jPanel2.add(cb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 18, -1, 20));
 
         cb6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sanction ID" }));
-        jPanel2.add(cb6, new org.netbeans.lib.awtextra.AbsoluteConstraints(592, 18, 100, 20));
+        jPanel2.add(cb6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 100, 20));
         jPanel2.add(t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 49, 114, 30));
-
-        cb7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cb7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rest LIst" }));
-        jPanel2.add(cb7, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 18, 100, 20));
-        jPanel2.add(t2, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 49, 114, 30));
-        jPanel2.add(t7, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 49, 100, 30));
-
-        cb2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cb2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id ", "First Name", "Last Name", "Rank", "Blood Type", "Training id", "Date of birth", "Platoon Id", "Driving license" }));
-        jPanel2.add(cb2, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 18, -1, 20));
-
-        cb3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cb3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id ", "First Name", "Last Name", "Rank", "Blood Type", "Training id", "Date of birth", "Platoon Id", "Driving license" }));
-        jPanel2.add(cb3, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 18, -1, 20));
-        jPanel2.add(t3, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 49, 114, 30));
-        jPanel2.add(t4, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 49, 90, 30));
+        jPanel2.add(t4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 90, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 820, 110));
@@ -148,9 +163,19 @@ public class Search_cl extends javax.swing.JFrame {
         setBounds(0, 0, 1179, 582);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cb5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb5ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+       String choice = (String) cb1.getSelectedItem();
+       String soldiertbl =  t1.getText();
+        String trainingtbl = t4.getText();
+       String sanctiontbl  = t6.getText();
+        try {
+            search = Uhandler.search_param( con,  username ,  choice ,  soldiertbl ,  trainingtbl,  sanctiontbl);
+            search();
+        } catch (SQLException ex) {
+            Logger.getLogger(Search_cl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,12 +214,8 @@ public class Search_cl extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb1;
-    private javax.swing.JComboBox<String> cb2;
-    private javax.swing.JComboBox<String> cb3;
     private javax.swing.JComboBox<String> cb4;
-    private javax.swing.JComboBox<String> cb5;
     private javax.swing.JComboBox<String> cb6;
-    private javax.swing.JComboBox<String> cb7;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -206,11 +227,66 @@ public class Search_cl extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField t1;
-    private javax.swing.JTextField t2;
-    private javax.swing.JTextField t3;
     private javax.swing.JTextField t4;
-    private javax.swing.JTextField t5;
     private javax.swing.JTextField t6;
-    private javax.swing.JTextField t7;
     // End of variables declaration//GEN-END:variables
+
+    public void search() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        String prev_soldier_id = "0";
+        String prev_driving = "";
+        String prev_training = "";
+        String prev_sanction = "";
+        for (Vector<String> v : search) {
+// "Meeting Id", "Subject", "Status", "Date"       
+            String Soldier_Id = v.get(0);
+            String First_Name = v.get(1);
+            String Last_Name = v.get(2);
+            String Rank = v.get(3);
+            String DOB = v.get(4);
+            String Platoon_Id = v.get(5);
+            String Phone_Number = v.get(6);
+            String Position = v.get(7);
+            String Blood_Type = v.get(8);
+            String reference = v.get(9);
+            String sanction = v.get(10);
+            if (prev_soldier_id.equals("0")) {
+                model.addRow(new Object[]{Soldier_Id, First_Name, Last_Name, Rank, DOB, Platoon_Id, Phone_Number, Position, Blood_Type, sanction, reference});
+                prev_soldier_id = Soldier_Id;
+                prev_training = reference;
+                prev_sanction = sanction;
+
+            } else {
+                if (Soldier_Id.equals(prev_soldier_id)) {
+                   
+                    if (!prev_training.equals(reference)) {
+                        model.addRow(new Object[]{"", "", "", "", "", "", "", "", "", "", reference});
+                    }
+                    if (!prev_sanction.equals(sanction)) {
+                        model.addRow(new Object[]{"", "", "", "", "", "", "", "", "", sanction,"" });
+                    }
+                } else {
+                    model.addRow(new Object[]{Soldier_Id, First_Name, Last_Name, Rank, DOB, Platoon_Id, Phone_Number, Position, Blood_Type, sanction,reference });
+                    prev_soldier_id = Soldier_Id;
+                    prev_training = reference;
+                    prev_sanction = sanction;
+
+                }
+            }
+
+        }
+
+    }
+//                day.add(rs.getString("Soldier_Id"));
+//                day.add(rs.getString("First_Name"));
+//                day.add(rs.getString("Last_Name"));
+//                day.add(rs.getString("Rank"));
+//                day.add(rs.getString("DOB"));
+//                day.add(rs.getString("Platoon_Id"));
+//                day.add(rs.getString("Phone_Number"));
+//                day.add(rs.getString("Position"));
+//                day.add(rs.getString("Blood_Type"));
+//                day.add(rs.getString("reference"));
+
 }

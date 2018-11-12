@@ -75,6 +75,7 @@ public class Check_meetings_history extends javax.swing.JFrame {
         jLabel1.setBounds(30, 20, 230, 40);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
+        jLabel3.setName(""); // NOI18N
         jPanel1.add(jLabel3);
         jLabel3.setBounds(0, 0, 840, 390);
 

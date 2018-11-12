@@ -348,7 +348,7 @@ new CalendarPanelTest().setVisible(true);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-new Search_cl().setVisible(true); 
+    new Search_cl().setVisible(true); 
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
