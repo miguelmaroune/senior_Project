@@ -17,8 +17,8 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class Cl_homepage extends javax.swing.JFrame {
-
-     ArrayList<String> DailyTasks = new ArrayList<>();
+    private Vector<Vector<String>> tasks = new Vector<>();
+   //  ArrayList<String> DailyTasks = new ArrayList<>();
     private Vector<Vector<String>> meetings = new Vector<>();
     private UserHandler Uhandler;
     private User user;
@@ -41,10 +41,16 @@ public class Cl_homepage extends javax.swing.JFrame {
             Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("adadadadad");
         }
-
+try {
+            tasks = Uhandler.check_task(con, username);
+        } catch (SQLException ex) {
+            Logger.getLogger(Soldier_home.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DbManager.CloseConnection();
+        }
         try {
             
-            DailyTasks = Uhandler.dailyTasks(con, username);
+          //  DailyTasks = Uhandler.dailyTasks(con, username);
             meetings = Uhandler.Secretary_meeting(con, username);
         } catch (SQLException ex) {
             Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,7 +59,7 @@ public class Cl_homepage extends javax.swing.JFrame {
         }
         initComponents();
 setMeetingTbl();
-        
+        settaskTbl();
         
         
     }
@@ -519,4 +525,20 @@ public void setMeetingTbl() {
 
     }
 
+public  void settaskTbl() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (Vector<String> v : tasks) {
+// "ass Id", "task id", "Status", "Date",reference,task report ,task highlitght       
+            String Assignment_id = v.get(0);
+            String Task = v.get(1);
+            String Status = v.get(2);
+            String Date = v.get(3);
+            String Reference = v.get(4);
+            String Report = v.get(5);
+            String Highlights = v.get(6);
+            model.addRow(new Object[]{Assignment_id, Task, Status, Date, Reference, Report,Highlights});
+        }
+
+    }
 }
