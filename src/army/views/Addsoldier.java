@@ -238,11 +238,6 @@ public class Addsoldier extends javax.swing.JFrame {
         TRAINING_ID.setBounds(250, 20, 90, 15);
 
         sstatus.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        sstatus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                sstatusKeyTyped(evt);
-            }
-        });
         jPanel1.add(sstatus);
         sstatus.setBounds(390, 250, 140, 20);
 
@@ -664,12 +659,6 @@ public class Addsoldier extends javax.swing.JFrame {
             evt.consume();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_trainingidKeyTyped
-    private void sstatusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sstatusKeyTyped
-        char c = evt.getKeyChar();
-        if (!(Character.isDigit(c)) || c == KeyEvent.VK_BACKSPACE || c == KeyEvent.VK_DELETE) {
-            evt.consume();
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_sstatusKeyTyped
 
     private void addsoldier1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addsoldier1ActionPerformed
  try {
@@ -681,8 +670,8 @@ public class Addsoldier extends javax.swing.JFrame {
                 }
 
                 PreparedStatement ps = con.prepareStatement("INSERT INTO `execute_sanction`(`Sanction_ID`, `Soldier_ID`, "
-                        + "`duration`, `reference`,'executed',`date_Commited','deduction',`status')"
-                        + "  VALUES (?,?,?,?,?,?,?)");
+                        + "'duration', 'reference','executed','date_Commited','deduction','status')"
+                        + "  VALUES (?,?,?,?,?,?,?,?)");
 
                 String abc = sid.getText();
                 ps.setInt(1, Integer.parseInt(abc));
