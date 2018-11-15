@@ -35,7 +35,7 @@ public class Soldier_home extends javax.swing.JFrame {
         }
 
         try {
-            tasks = Uhandler.check_task(con, username);
+            tasks = Uhandler.checkowndailytask(con, username);
         } catch (SQLException ex) {
             Logger.getLogger(Soldier_home.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -44,7 +44,7 @@ public class Soldier_home extends javax.swing.JFrame {
         
         
         try {
-            meetings = Uhandler.check_meeting(con, username);
+            meetings = Uhandler.checkownmeeting(con, username);
         } catch (SQLException ex) {
             Logger.getLogger(Soldier_home.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -66,7 +66,7 @@ public class Soldier_home extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        addtaskreport = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
@@ -128,9 +128,14 @@ public class Soldier_home extends javax.swing.JFrame {
         jPanel1.add(jScrollPane2);
         jScrollPane2.setBounds(20, 280, 670, 90);
 
-        jButton1.setText("Add Task Report");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(450, 190, 160, 23);
+        addtaskreport.setText("Add Task Report");
+        addtaskreport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addtaskreportActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addtaskreport);
+        addtaskreport.setBounds(450, 190, 160, 23);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel1.add(jLabel3);
@@ -211,10 +216,14 @@ public class Soldier_home extends javax.swing.JFrame {
         new CalendarPanelTest().setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void addtaskreportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addtaskreportActionPerformed
+
+    }//GEN-LAST:event_addtaskreportActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton addtaskreport;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
