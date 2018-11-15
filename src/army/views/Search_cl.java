@@ -1,15 +1,52 @@
-
 package army.views;
 
+import army.calendar.CalendarPanel;
+import army.controller.DbManager;
+import army.handler.UserHandler;
+import army.model.User;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 public class Search_cl extends javax.swing.JFrame {
 
-   
+    private UserHandler Uhandler;
+    private User user;
+    private String username;
+    private Connection con;
+
+    private Vector<Vector<String>> search = new Vector<>();
+
     public Search_cl() {
+        Uhandler = new UserHandler();
+        user = Uhandler.getCurrUser();
+        username = user.getUsername();
+        con = null;
+
+//        for testing 
+//         username = "123456";
+        try {
+            if (con == null) {
+                con = DbManager.getConnection();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("adadadadad");
+        }
+
+        try {
+            search = Uhandler.search(con, username);
+        } catch (SQLException ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DbManager.CloseConnection();
+        }
         initComponents();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -39,6 +76,11 @@ public class Search_cl extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/magnifier.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(830, 10, 105, 100);
 
@@ -47,12 +89,13 @@ public class Search_cl extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "First name", "Last name", "Rank", "D O B", "Platoon Id", "Phone #", "Position", "Blood type", "Driving license", "Training Id", "Sanction ID", "Rest List"
+                "Id", "First name", "Last name", "Rank", "D O B", "Platoon Id", "Phone #", "Position", "Blood type", "Training ", "Sanction "
             }
         ));
         jTable1.setColumnSelectionAllowed(true);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        search();
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         jPanel1.add(jScrollPane1);
@@ -84,7 +127,7 @@ public class Search_cl extends javax.swing.JFrame {
         jPanel2.add(t6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, 100, 20));
 
         cb1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id ", "First Name", "Last Name", "Rank", "Blood Type", " " }));
+        cb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soldier_Id ", "First_Name", "Last_Name", "Rank", "Blood_Type", " " }));
         jPanel2.add(cb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 110, 20));
 
         cb6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -114,43 +157,22 @@ public class Search_cl extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cb5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb5ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cb5ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      String choice = (String) cb1.getSelectedItem();
+       String soldiertbl =  t1.getText();
+        String trainingtbl = t4.getText();
+       String sanctiontbl  = t6.getText();
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Search_cl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Search_cl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Search_cl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Search_cl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            search = Uhandler.search_param( con,  username ,  choice ,  soldiertbl ,  trainingtbl,  sanctiontbl);
+            search();
+        } catch (SQLException ex) {
+            Logger.getLogger(Search_cl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Search_cl().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb1;
@@ -172,4 +194,51 @@ public class Search_cl extends javax.swing.JFrame {
     private javax.swing.JTextField t5;
     private javax.swing.JTextField t6;
     // End of variables declaration//GEN-END:variables
+
+    public void search() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        String prev_soldier_id = "0";
+        String prev_driving = "";
+        String prev_training = "";
+        String prev_sanction = "";
+        for (Vector<String> v : search) {
+// "Meeting Id", "Subject", "Status", "Date"       
+            String Soldier_Id = v.get(0);
+            String First_Name = v.get(1);
+            String Last_Name = v.get(2);
+            String Rank = v.get(3);
+            String DOB = v.get(4);
+            String Platoon_Id = v.get(5);
+            String Phone_Number = v.get(6);
+            String Position = v.get(7);
+            String Blood_Type = v.get(8);
+            String reference = v.get(9);
+            String sanction = v.get(10);
+            if (prev_soldier_id.equals("0")) {
+                model.addRow(new Object[]{Soldier_Id, First_Name, Last_Name, Rank, DOB, Platoon_Id, Phone_Number, Position, Blood_Type, sanction, reference});
+                prev_soldier_id = Soldier_Id;
+                prev_training = reference;
+                prev_sanction = sanction;
+
+            } else {
+                if (Soldier_Id.equals(prev_soldier_id)) {
+
+                    if (!prev_training.equals(reference)) {
+                        model.addRow(new Object[]{"", "", "", "", "", "", "", "", "", "", reference});
+                    }
+                    if (!prev_sanction.equals(sanction)) {
+                        model.addRow(new Object[]{"", "", "", "", "", "", "", "", "", sanction, ""});
+                    }
+                } else {
+                    model.addRow(new Object[]{Soldier_Id, First_Name, Last_Name, Rank, DOB, Platoon_Id, Phone_Number, Position, Blood_Type, sanction, reference});
+                    prev_soldier_id = Soldier_Id;
+                    prev_training = reference;
+                    prev_sanction = sanction;
+
+                }
+            }
+
+        }
+    }
 }

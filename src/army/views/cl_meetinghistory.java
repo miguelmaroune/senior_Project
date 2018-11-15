@@ -27,6 +27,8 @@ public class cl_meetinghistory extends javax.swing.JFrame {
     String result;
     String result2;
     DefaultTableModel dm;
+    
+    
     public cl_meetinghistory() {
         UserHandler Uhandler = new UserHandler();
         User user = Uhandler.getCurrUser();
@@ -155,8 +157,6 @@ public class cl_meetinghistory extends javax.swing.JFrame {
 
     private void cbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbItemStateChanged
         result= (String) cb.getSelectedItem();
-                                         
-String result= (String) cb.getSelectedItem();
         try {                                    
             try {
                 

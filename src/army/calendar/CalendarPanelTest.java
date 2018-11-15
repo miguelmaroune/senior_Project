@@ -35,7 +35,6 @@ public class CalendarPanelTest
     public CalendarPanelTest() {
         super("Calendar ");
         setSize(600, 600);
-        setDefaultCloseOperation(3);
         Container localContainer = getContentPane();
         localContainer.setLayout(new BorderLayout());
         JPanel localJPanel = new JPanel(new FlowLayout());

@@ -28,30 +28,26 @@
     <Property name="useNullLayout" type="boolean" value="true"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="jTextField1">
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="300" y="70" width="137" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="14" style="0"/>
+          <Font name="Tahoma" size="24" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="View tasks by"/>
+        <Property name="text" type="java.lang.String" value="Please choose search criteria"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="20" width="94" height="-1"/>
+          <AbsoluteConstraints x="20" y="40" width="350" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+    <Component class="com.toedter.calendar.JDateChooser" name="date">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Choose by date"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="302" y="39" width="137" height="-1"/>
+          <AbsoluteConstraints x="270" y="110" width="170" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -126,63 +122,42 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="edit">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="626" y="402" width="100" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="delete">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="744" y="402" width="100" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="addtask">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Task"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addtaskActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="730" y="503" width="120" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Assignment id"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="70" width="140" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Date"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="40" width="140" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="View"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="471" y="21" width="90" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -192,7 +167,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="124" width="895" height="260"/>
+          <AbsoluteConstraints x="10" y="140" width="895" height="260"/>
         </Constraint>
       </Constraints>
 
@@ -263,20 +238,107 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton3">
+    <Component class="javax.swing.JComboBox" name="aid">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Military Id"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="1">
+            <StringItem index="0" value="Choose by Assignment id"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="aidItemStateChanged"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="10" width="140" height="-1"/>
+          <AbsoluteConstraints x="410" y="20" width="170" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JComboBox" name="mid">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="1">
+            <StringItem index="0" value="Choose by Military id"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="midItemStateChanged"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="302" y="11" width="137" height="-1"/>
+          <AbsoluteConstraints x="410" y="50" width="170" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton4">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/army/icons/magnifier.png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="790" y="40" width="50" height="60"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Press to see all tasks"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="730" y="10" width="180" height="20"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Choose By Date"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="420" y="80" width="140" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Go to selected Date"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="450" y="110" width="200" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="YYYY-MM_DD"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="290" y="420" width="100" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -19,6 +19,7 @@ public class Request_meetingcl extends javax.swing.JFrame {
     Connection conn=null;
     PreparedStatement pst=null;
     ResultSet rs=null;
+    
     public Request_meetingcl() {
         initComponents();
         fill_combo();
@@ -88,7 +89,21 @@ public class Request_meetingcl extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    private void fill_combo(){
+        try {
+          conn= DriverManager.getConnection(Settings.DBURL, Settings.DBUserName,Settings.DBPassword);
+        String sql ="select * from soldier";
+        pst=conn.prepareStatement (sql);
+        rs=pst.executeQuery();
+        while(rs.next()){
+            
+          String id=rs.getString("Soldier_Id");
+            
+            cb.addItem(id);
+        }        }catch (Exception e){
+                JOptionPane.showMessageDialog(null, e);
+        }
+    }
     private void cbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbItemStateChanged
 String result= (String) cb.getSelectedItem();
         try {                                    
@@ -118,38 +133,7 @@ String result= (String) cb.getSelectedItem();
                 Logger.getLogger(Request_meetingcl.class.getName()).log(Level.SEVERE, null, ex);
             }        // TODO add your handling code here:
     }//GEN-LAST:event_cbItemStateChanged
-
-    
-  
-
-    private void fill_combo(){
-        try {
-          conn= DriverManager.getConnection(Settings.DBURL, Settings.DBUserName,Settings.DBPassword);
-        String sql ="select * from soldier";
-        pst=conn.prepareStatement (sql);
-        rs=pst.executeQuery();
-        while(rs.next()){
-            
-          String id=rs.getString("Soldier_Id");
-            
-            cb.addItem(id);
-        }        }catch (Exception e){
-                JOptionPane.showMessageDialog(null, e);
-        }
-    }
-    
-    
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cb;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel label;
-    private javax.swing.JTextField subject;
-    // End of variables declaration//GEN-END:variables
-
-public void insert_meeting(String request) {
+    public void insert_meeting(String request) {
         UserHandler Uhandler = new UserHandler();
         User user = Uhandler.getCurrUser();
         Connection con = null;
@@ -166,6 +150,7 @@ public void insert_meeting(String request) {
 
         try {
             Uhandler.request_meeting(con, username, request);
+           JOptionPane.showMessageDialog(null,"Request Sent");
             setVisible(false);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "could not set meeting!", "Connection error", JOptionPane.ERROR_MESSAGE);
@@ -174,4 +159,17 @@ public void insert_meeting(String request) {
             DbManager.CloseConnection();}
         
 
-}}
+}
+    
+  
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cb;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel label;
+    private javax.swing.JTextField subject;
+    // End of variables declaration//GEN-END:variables
+}
