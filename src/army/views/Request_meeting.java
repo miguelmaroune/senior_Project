@@ -62,30 +62,12 @@ public class Request_meeting extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         insert_meeting(subject.getText());
     }//GEN-LAST:event_jButton3ActionPerformed
-
-//    public static void main(String args[]) {
-//        
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Request_meeting().setVisible(true);
-//            }
-//        });
-//    }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField subject;
-    // End of variables declaration//GEN-END:variables
-public void insert_meeting(String request) {
+    public void insert_meeting(String request) {
         UserHandler Uhandler = new UserHandler();
         User user = Uhandler.getCurrUser();
         Connection con = null;
         String username = user.getUsername();
-//        for testing 
-//        String username = "123456";
+
         try {
             if (con == null) {
                 con = DbManager.getConnection();
@@ -105,4 +87,14 @@ public void insert_meeting(String request) {
         }
 
     }
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField subject;
+    // End of variables declaration//GEN-END:variables
+
 }

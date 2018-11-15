@@ -13,12 +13,12 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 
 public class Cl_homepage extends javax.swing.JFrame {
     private Vector<Vector<String>> tasks = new Vector<>();
-   //  ArrayList<String> DailyTasks = new ArrayList<>();
     private Vector<Vector<String>> meetings = new Vector<>();
     private UserHandler Uhandler;
     private User user;
@@ -29,29 +29,24 @@ public class Cl_homepage extends javax.swing.JFrame {
          Uhandler = new UserHandler();
         User user = Uhandler.getCurrUser();
          username = user.getUsername();
-       con = null;
+        con = null;
        
-        
-
         try {
             if (con == null) {
                 con = DbManager.getConnection();
             }
         } catch (Exception ex) {
             Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("adadadadad");
-        }
+            }
 try {
-            tasks = Uhandler.check_task(con, username);
+        tasks = Uhandler.checkowndailytask(con, username);
         } catch (SQLException ex) {
             Logger.getLogger(Soldier_home.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             DbManager.CloseConnection();
         }
         try {
-            
-          //  DailyTasks = Uhandler.dailyTasks(con, username);
-            meetings = Uhandler.Secretary_meeting(con, username);
+        meetings = Uhandler.showallpendingmeetings(con, username);
         } catch (SQLException ex) {
             Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -74,11 +69,12 @@ try {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        setresult = new javax.swing.JButton();
+        setstatus = new javax.swing.JButton();
+        setdate = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        refresh = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         meeting = new javax.swing.JMenu();
@@ -92,7 +88,6 @@ try {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -143,32 +138,32 @@ try {
         jPanel3.add(jLabel2);
         jLabel2.setBounds(110, 20, 500, 25);
 
-        jButton1.setText("Set Meeting result");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        setresult.setText("Set Meeting result");
+        setresult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                setresultActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1);
-        jButton1.setBounds(190, 340, 150, 23);
+        jPanel3.add(setresult);
+        setresult.setBounds(190, 340, 150, 23);
 
-        jButton5.setText("Set Meeting Status");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        setstatus.setText("Set Meeting Status");
+        setstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                setstatusActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton5);
-        jButton5.setBounds(360, 340, 150, 23);
+        jPanel3.add(setstatus);
+        setstatus.setBounds(360, 340, 150, 23);
 
-        jButton4.setText("Set Meeting Date");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        setdate.setText("Set Meeting Date");
+        setdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                setdateActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton4);
-        jButton4.setBounds(540, 340, 150, 23);
+        jPanel3.add(setdate);
+        setdate.setBounds(540, 340, 150, 23);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,6 +180,15 @@ try {
 
         jPanel3.add(jScrollPane2);
         jScrollPane2.setBounds(20, 230, 670, 90);
+
+        refresh.setText("Refresh");
+        refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshActionPerformed(evt);
+            }
+        });
+        jPanel3.add(refresh);
+        refresh.setBounds(0, 360, 110, 23);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel3.add(jLabel3);
@@ -264,9 +268,6 @@ try {
 
         jMenuItem7.setText("Tarashi7");
         jMenu4.add(jMenuItem7);
-
-        jMenuItem8.setText("Awsime");
-        jMenu4.add(jMenuItem8);
 
         jMenuItem2.setText("Tables");
         jMenu4.add(jMenuItem2);
@@ -352,56 +353,44 @@ try {
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
 new Tasks().setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
-
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         
     }//GEN-LAST:event_jMenuItem11ActionPerformed
-
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
     new Sanction_paper().setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
-
     private void meetingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetingActionPerformed
 
     }//GEN-LAST:event_meetingActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
     new Request_meetingcl().setVisible(true);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
 new cl_meetinghistory().setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
 new CalendarPanelTest().setVisible(true);
 
     }//GEN-LAST:event_jMenuItem18ActionPerformed
-
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
 new Search_cl().setVisible(true); 
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         new Addsoldier().setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
      new   adduser().setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
 new   Listjouhouz().setVisible(true);    }//GEN-LAST:event_jMenuItem15ActionPerformed
-
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
 new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
-
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         new Workdays().setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void setstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setstatusActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();        Vector<String> v = new Vector<>();
 
@@ -421,9 +410,8 @@ new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
         } finally {
             DbManager.CloseConnection();
         }
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_setstatusActionPerformed
+    private void setdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setdateActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         Vector<String> v = new Vector<>();
@@ -443,9 +431,8 @@ new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
         } finally {
             DbManager.CloseConnection();
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_setdateActionPerformed
+    private void setresultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setresultActionPerformed
   DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         Vector<String> v = new Vector<>();
         v = (Vector<String>) model.getDataVector().elementAt(jTable2.getSelectedRow());
@@ -463,16 +450,49 @@ new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
             Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             DbManager.CloseConnection();
-        }    }//GEN-LAST:event_jButton1ActionPerformed
+        }    }//GEN-LAST:event_setresultActionPerformed
 
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+       this.dispose();
+       new Cl_homepage().setVisible(true);
+        
+    }//GEN-LAST:event_refreshActionPerformed
+    public void setMeetingTbl() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        for (Vector<String> v : meetings) {
+// "Meeting Id","Military Id "Subject", "Status", "Date"       
+            String Meeting_ID = v.get(0);
+            String Military_ID = v.get(1);
+            String Subject = v.get(2);
+            String Status = v.get(3);
+            String Date = v.get(4);
+
+            model.addRow(new Object[]{Meeting_ID, Military_ID,Subject, Status, Date});
+        }
+
+    }
+    public  void settaskTbl() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (Vector<String> v : tasks) {
+// "ass Id", "task id", "Status", "Date",reference,task report ,task highlitght       
+            String Assignment_id = v.get(0);
+            String Task = v.get(1);
+            String Status = v.get(2);
+            String Date = v.get(6);
+            String Reference = v.get(3);
+            String Report = v.get(4);
+            String Highlights = v.get(5);
+            model.addRow(new Object[]{Assignment_id, Task, Status, Date, Reference, Report,Highlights});
+        }
+
+    }
     
     
   
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -497,7 +517,6 @@ new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -506,39 +525,12 @@ new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JMenu meeting;
+    private javax.swing.JButton refresh;
+    private javax.swing.JButton setdate;
+    private javax.swing.JButton setresult;
+    private javax.swing.JButton setstatus;
     // End of variables declaration//GEN-END:variables
 
  
-public void setMeetingTbl() {
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        model.setRowCount(0);
-        for (Vector<String> v : meetings) {
-// "Meeting Id","Military Id "Subject", "Status", "Date"       
-            String Meeting_ID = v.get(0);
-            String Military_ID = v.get(1);
-            String Subject = v.get(2);
-            String Status = v.get(3);
-            String Date = v.get(4);
 
-            model.addRow(new Object[]{Meeting_ID, Military_ID,Subject, Status, Date});
-        }
-
-    }
-
-public  void settaskTbl() {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
-        for (Vector<String> v : tasks) {
-// "ass Id", "task id", "Status", "Date",reference,task report ,task highlitght       
-            String Assignment_id = v.get(0);
-            String Task = v.get(1);
-            String Status = v.get(2);
-            String Date = v.get(3);
-            String Reference = v.get(4);
-            String Report = v.get(5);
-            String Highlights = v.get(6);
-            model.addRow(new Object[]{Assignment_id, Task, Status, Date, Reference, Report,Highlights});
-        }
-
-    }
 }

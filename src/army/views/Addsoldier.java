@@ -35,7 +35,7 @@ public class Addsoldier extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        addsoldier = new javax.swing.JButton();
+        adgeneralinfo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -101,8 +101,8 @@ public class Addsoldier extends javax.swing.JFrame {
         dob6 = new com.toedter.calendar.JDateChooser();
         jLabel43 = new javax.swing.JLabel();
         eval = new javax.swing.JTextField();
-        addsoldier1 = new javax.swing.JButton();
-        addsoldier2 = new javax.swing.JButton();
+        addsanction = new javax.swing.JButton();
+        addtraining = new javax.swing.JButton();
         jLabel38 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -116,19 +116,19 @@ public class Addsoldier extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setLayout(null);
 
-        addsoldier.setFont(new java.awt.Font("Tekton Pro", 0, 16)); // NOI18N
-        addsoldier.setForeground(new java.awt.Color(0, 153, 102));
-        addsoldier.setText("Add General Info");
-        addsoldier.setToolTipText("add soldier");
-        addsoldier.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addsoldier.setOpaque(false);
-        addsoldier.addActionListener(new java.awt.event.ActionListener() {
+        adgeneralinfo.setFont(new java.awt.Font("Tekton Pro", 0, 16)); // NOI18N
+        adgeneralinfo.setForeground(new java.awt.Color(0, 153, 102));
+        adgeneralinfo.setText("Add General Info");
+        adgeneralinfo.setToolTipText("add soldier");
+        adgeneralinfo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        adgeneralinfo.setOpaque(false);
+        adgeneralinfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addsoldierActionPerformed(evt);
+                adgeneralinfoActionPerformed(evt);
             }
         });
-        jPanel1.add(addsoldier);
-        addsoldier.setBounds(570, 280, 270, 30);
+        jPanel1.add(adgeneralinfo);
+        adgeneralinfo.setBounds(570, 280, 270, 30);
 
         jLabel1.setBackground(new java.awt.Color(204, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
@@ -369,7 +369,7 @@ public class Addsoldier extends javax.swing.JFrame {
             }
         });
         jPanel1.add(choose);
-        choose.setBounds(103, 120, 110, 30);
+        choose.setBounds(93, 120, 120, 30);
 
         TRAINING_ID1.setBackground(new java.awt.Color(204, 255, 255));
         TRAINING_ID1.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
@@ -469,33 +469,33 @@ public class Addsoldier extends javax.swing.JFrame {
         jPanel1.add(eval);
         eval.setBounds(390, 100, 140, 20);
 
-        addsoldier1.setFont(new java.awt.Font("Tekton Pro", 0, 16)); // NOI18N
-        addsoldier1.setForeground(new java.awt.Color(0, 153, 102));
-        addsoldier1.setText("Add sanction");
-        addsoldier1.setToolTipText("add soldier");
-        addsoldier1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addsoldier1.setOpaque(false);
-        addsoldier1.addActionListener(new java.awt.event.ActionListener() {
+        addsanction.setFont(new java.awt.Font("Tekton Pro", 0, 16)); // NOI18N
+        addsanction.setForeground(new java.awt.Color(0, 153, 102));
+        addsanction.setText("Add sanction");
+        addsanction.setToolTipText("add soldier");
+        addsanction.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addsanction.setOpaque(false);
+        addsanction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addsoldier1ActionPerformed(evt);
+                addsanctionActionPerformed(evt);
             }
         });
-        jPanel1.add(addsoldier1);
-        addsoldier1.setBounds(570, 360, 270, 30);
+        jPanel1.add(addsanction);
+        addsanction.setBounds(570, 360, 270, 30);
 
-        addsoldier2.setFont(new java.awt.Font("Tekton Pro", 0, 16)); // NOI18N
-        addsoldier2.setForeground(new java.awt.Color(0, 153, 102));
-        addsoldier2.setText("Add Training");
-        addsoldier2.setToolTipText("add soldier");
-        addsoldier2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addsoldier2.setOpaque(false);
-        addsoldier2.addActionListener(new java.awt.event.ActionListener() {
+        addtraining.setFont(new java.awt.Font("Tekton Pro", 0, 16)); // NOI18N
+        addtraining.setForeground(new java.awt.Color(0, 153, 102));
+        addtraining.setText("Add Training");
+        addtraining.setToolTipText("add soldier");
+        addtraining.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addtraining.setOpaque(false);
+        addtraining.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addsoldier2ActionPerformed(evt);
+                addtrainingActionPerformed(evt);
             }
         });
-        jPanel1.add(addsoldier2);
-        addsoldier2.setBounds(570, 320, 270, 30);
+        jPanel1.add(addtraining);
+        addtraining.setBounds(570, 320, 270, 30);
 
         jLabel38.setBackground(new java.awt.Color(204, 255, 255));
         jLabel38.setFont(new java.awt.Font("Tekton Pro", 0, 14)); // NOI18N
@@ -592,7 +592,7 @@ public class Addsoldier extends javax.swing.JFrame {
     // Soldier x =new Soldier(sid,fname,lname);
     //   return x;}
 
-    private void addsoldierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addsoldierActionPerformed
+    private void adgeneralinfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adgeneralinfoActionPerformed
 
         if (checkInputs() && imgpath != null) {
             try {
@@ -634,7 +634,7 @@ public class Addsoldier extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "cannot be added...one or more fields are empty");
         }
-    }//GEN-LAST:event_addsoldierActionPerformed
+    }//GEN-LAST:event_adgeneralinfoActionPerformed
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.exit(0);
 
@@ -660,7 +660,7 @@ public class Addsoldier extends javax.swing.JFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_trainingidKeyTyped
 
-    private void addsoldier1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addsoldier1ActionPerformed
+    private void addsanctionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addsanctionActionPerformed
 if(id.getText().equals("")){JOptionPane.showMessageDialog(null, "Please enter id");}else{ try {
                 Connection con = null;
                 try {
@@ -697,9 +697,9 @@ if(id.getText().equals("")){JOptionPane.showMessageDialog(null, "Please enter id
             }}
 
                 
-    }//GEN-LAST:event_addsoldier1ActionPerformed
+    }//GEN-LAST:event_addsanctionActionPerformed
 
-    private void addsoldier2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addsoldier2ActionPerformed
+    private void addtrainingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addtrainingActionPerformed
 if(id.getText().equals("")){JOptionPane.showMessageDialog(null, "Please enter id");}else{
     try {
                 Connection con = null;
@@ -719,7 +719,7 @@ if(id.getText().equals("")){JOptionPane.showMessageDialog(null, "Please enter id
                 ps.setString(3, loc.getText());
                 ps.setString(4, ref.getText());
                 SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-                String adddate = dateformat.format(dob2.getDate()); ps.setString(3, fn.getText());
+                String adddate = dateformat.format(dob2.getDate());
                 ps.setString(5, adddate);
                 SimpleDateFormat dateformat2 = new SimpleDateFormat("yyyy-MM-dd");
                 String adddate2 = dateformat.format(dob1.getDate());
@@ -736,7 +736,7 @@ if(id.getText().equals("")){JOptionPane.showMessageDialog(null, "Please enter id
             
             }}
         
-    }//GEN-LAST:event_addsoldier2ActionPerformed
+    }//GEN-LAST:event_addtrainingActionPerformed
 
     private void ln1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ln1KeyTyped
  char c = evt.getKeyChar();
@@ -757,9 +757,9 @@ if(id.getText().equals("")){JOptionPane.showMessageDialog(null, "Please enter id
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TRAINING_ID;
     private javax.swing.JLabel TRAINING_ID1;
-    private javax.swing.JButton addsoldier;
-    private javax.swing.JButton addsoldier1;
-    private javax.swing.JButton addsoldier2;
+    private javax.swing.JButton addsanction;
+    private javax.swing.JButton addtraining;
+    private javax.swing.JButton adgeneralinfo;
     static javax.swing.JLabel bimage;
     static javax.swing.JTextField bloodtype;
     private javax.swing.JButton choose;

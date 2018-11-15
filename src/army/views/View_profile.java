@@ -24,8 +24,7 @@ public class View_profile extends javax.swing.JFrame {
         User user = Uhandler.getCurrUser();
         Connection con = null;
         String username = user.getUsername();
-//        for testing 
-//        String username = "123456";
+
         try {
             if (con == null) {
                 con = DbManager.getConnection();

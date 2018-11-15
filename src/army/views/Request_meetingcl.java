@@ -138,8 +138,7 @@ String result= (String) cb.getSelectedItem();
         User user = Uhandler.getCurrUser();
         Connection con = null;
         String username = (String) cb.getSelectedItem();
-//        for testing 
-//        String username = "123456";
+
         try {
             if (con == null) {
                 con = DbManager.getConnection();

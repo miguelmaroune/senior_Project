@@ -15,7 +15,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class SecretaryHome extends javax.swing.JFrame {
 
-    ArrayList<String> DailyTasks = new ArrayList<>();
+    //ArrayList<String> DailyTasks = new ArrayList<>();
+    private Vector<Vector<String>> tasks = new Vector<>();
     private Vector<Vector<String>> meetings = new Vector<>();
     private UserHandler Uhandler;
     private User user;
@@ -29,20 +30,17 @@ public class SecretaryHome extends javax.swing.JFrame {
         username = user.getUsername();
         con = null;
 
-//        for testing 
-//         username = "123456";
         try {
             if (con == null) {
                 con = DbManager.getConnection();
             }
         } catch (Exception ex) {
             Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("adadadadad");
-        }
+                    }
 
         try {
-            DailyTasks = Uhandler.dailyTasks(con, username);
-            meetings = Uhandler.Secretary_meeting(con, username);
+            tasks = Uhandler.checkowndailytask(con, username);
+            meetings = Uhandler.showallpendingmeetings(con, username);
         } catch (SQLException ex) {
             Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -62,17 +60,18 @@ public class SecretaryHome extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        setmeetingdate = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        setmeetingstatus = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        refresh = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         meeting = new javax.swing.JMenu();
@@ -109,6 +108,16 @@ public class SecretaryHome extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Assignment Id");
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Task ");
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Status");
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Date");
+            jTable1.getColumnModel().getColumn(4).setHeaderValue("Reference");
+            jTable1.getColumnModel().getColumn(5).setHeaderValue("Task report");
+            jTable1.getColumnModel().getColumn(6).setHeaderValue("Task highlights");
+            jTable1.getColumnModel().getColumn(7).setHeaderValue("Id");
+        }
 
         jPanel3.add(jScrollPane1);
         jScrollPane1.setBounds(10, 240, 680, 90);
@@ -144,14 +153,14 @@ public class SecretaryHome extends javax.swing.JFrame {
         jPanel3.add(jScrollPane2);
         jScrollPane2.setBounds(20, 420, 670, 90);
 
-        jButton1.setText("Set Meeting Date");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        setmeetingdate.setText("Set Meeting Date");
+        setmeetingdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                setmeetingdateActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1);
-        jButton1.setBounds(530, 520, 150, 23);
+        jPanel3.add(setmeetingdate);
+        setmeetingdate.setBounds(530, 520, 150, 23);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,14 +197,14 @@ public class SecretaryHome extends javax.swing.JFrame {
         jPanel3.add(jButton4);
         jButton4.setBounds(20, 340, 80, 23);
 
-        jButton5.setText("Set Meeting Status");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        setmeetingstatus.setText("Set Meeting Status");
+        setmeetingstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                setmeetingstatusActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton5);
-        jButton5.setBounds(350, 520, 150, 23);
+        jPanel3.add(setmeetingstatus);
+        setmeetingstatus.setBounds(350, 520, 150, 23);
 
         jButton6.setText("remove");
         jPanel3.add(jButton6);
@@ -208,6 +217,15 @@ public class SecretaryHome extends javax.swing.JFrame {
         jButton8.setText("Add task report");
         jPanel3.add(jButton8);
         jButton8.setBounds(510, 340, 150, 23);
+
+        refresh.setText("Refresh");
+        refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshActionPerformed(evt);
+            }
+        });
+        jPanel3.add(refresh);
+        refresh.setBounds(10, 520, 110, 23);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
         jPanel3.add(jLabel3);
@@ -306,28 +324,22 @@ public class SecretaryHome extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         new Request_meeting().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new View_profile().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         new Check_meetings_history().setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         new CalendarPanelTest().setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
-
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         new search().setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         new Addsoldier().setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void setmeetingstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setmeetingstatusActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         Vector<String> v = new Vector<>();
@@ -347,9 +359,8 @@ public class SecretaryHome extends javax.swing.JFrame {
         } finally {
             DbManager.CloseConnection();
         }
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_setmeetingstatusActionPerformed
+    private void setmeetingdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setmeetingdateActionPerformed
                // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         Vector<String> v = new Vector<>();
@@ -369,19 +380,49 @@ public class SecretaryHome extends javax.swing.JFrame {
         } finally {
             DbManager.CloseConnection();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_setmeetingdateActionPerformed
 
-    public static void main(String args[]) {
-
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+        this.dispose();
         new SecretaryHome().setVisible(true);
+
+    }//GEN-LAST:event_refreshActionPerformed
+    public void setMeetingTbl() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        for (Vector<String> v : meetings) {
+// "Meeting Id", "Subject", "Status", "Date"       
+            String Meeting_ID = v.get(0);
+            String Military_ID = v.get(1);
+            String Subject = v.get(2);
+            String Status = v.get(3);
+            String Date = v.get(4);
+
+            model.addRow(new Object[]{Meeting_ID, Military_ID,Subject, Status, Date});
+        }
+
+    }
+    public  void settaskTbl() {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (Vector<String> v : tasks) {
+// "ass Id", "task id", "Status", "Date",reference,task report ,task highlitght       
+            String Assignment_id = v.get(0);
+            String Task = v.get(1);
+            String Status = v.get(2);
+            String Date = v.get(6);
+            String Reference = v.get(3);
+            String Report = v.get(4);
+            String Highlights = v.get(5);
+            model.addRow(new Object[]{Assignment_id, Task, Status, Date, Reference, Report,Highlights});
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -411,21 +452,10 @@ public class SecretaryHome extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JMenu meeting;
+    private javax.swing.JButton refresh;
+    private javax.swing.JButton setmeetingdate;
+    private javax.swing.JButton setmeetingstatus;
     // End of variables declaration//GEN-END:variables
 
-    public void setMeetingTbl() {
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        model.setRowCount(0);
-        for (Vector<String> v : meetings) {
-// "Meeting Id", "Subject", "Status", "Date"       
-            String Meeting_ID = v.get(0);
-            String Military_ID = v.get(1);
-            String Subject = v.get(2);
-            String Status = v.get(3);
-            String Date = v.get(4);
-
-            model.addRow(new Object[]{Meeting_ID, Military_ID,Subject, Status, Date});
-        }
-
-    }
+  
 }

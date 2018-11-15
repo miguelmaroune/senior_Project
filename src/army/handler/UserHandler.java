@@ -22,154 +22,6 @@ public class UserHandler {
         User CurrentUser = User.getinstance();
         return CurrentUser;
     }
-    
-    public Vector<Vector<String>> getSchedule(Connection connection, String CurrentUser) throws SQLException {
-        Vector<Vector<String>> sch = new Vector<Vector<String>>();
-
-        try {
-            String query = "SELECT Attendance_flag , Full_Date "
-                    + "FROM workdays w , calender c "
-                    + " where w.Calender_Id = c.Calender_Id  "
-                    + " and w.Soldier_Id = " + CurrentUser
-                    + " ORDER BY Full_Date DESC";
-//               
-            PreparedStatement ps = connection.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Vector<String> day = new Vector<String>();
-                day.add(rs.getString("Attendance_flag"));
-                day.add(rs.getString("Full_Date"));
-                sch.add(day);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return sch;
-    }
-    public HashMap<String, Vector<Vector<String>>> getTask(Connection connection, String CurrentUser) throws SQLException {
-//        Vector<String> tasks = new Vector<String>();
-        HashMap<String, Vector<Vector<String>>> tasks = new HashMap<>();
-        try {
-            String query = "SELECT Date_Assigned ,Task_duration,Description,Reference "
-                    + "FROM assigned_task  a, task t "
-                    + " WHERE a.Task_Id = t.Task_Id  "
-                    + " AND   a.Soldier_Id = " + CurrentUser
-                    + " ORDER BY Date_Assigned DESC ";
-//               
-            PreparedStatement ps = connection.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-
-            String FULL_DATE;
-
-            while (rs.next()) {
-                Vector<Vector<String>> dataAll = new Vector<>();
-                Vector<String> task = new Vector<>();
-                task.add(rs.getString("Task_duration"));
-                task.add(rs.getString("Description"));
-                task.add(rs.getString("Reference"));
-                FULL_DATE = rs.getString("Date_Assigned");
-                FULL_DATE = FULL_DATE.replace("-", "");
-//               
-                dataAll.add(task);
-                if (tasks.containsKey(FULL_DATE)) {
-                    dataAll = tasks.get(FULL_DATE);
-                    dataAll.add(task);
-                    tasks.put(FULL_DATE, dataAll);
-                } else {
-                    tasks.put(FULL_DATE, dataAll);
-
-                }
-
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return tasks;
-    }
-    public ArrayList<String> dailyTasks(Connection connection, String CurrentUser) throws SQLException {
-        ArrayList<String> dailyTask = new ArrayList<>();
-
-        try {
-            String query = "SELECT Description,Reference "
-                    + "FROM assigned_task  a, task t "
-                    + " WHERE a.Task_Id = t.Task_Id  "
-                    + " AND   a.Soldier_Id = " + CurrentUser
-                    + " AND  Date_Assigned = CURDATE() ";
-//               
-            PreparedStatement ps = connection.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-
-                dailyTask.add(rs.getString("Description") + ";" + rs.getString("Reference"));
-
-            } 
-
-        } catch (SQLException ex) {
-            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return dailyTask;
-    }
-   
-    public Vector<Vector<String>> check_meeting(Connection connection, String CurrentUser) throws SQLException {
-//
-        Vector<Vector<String>> chk = new Vector<Vector<String>>();
-
-        try {
-            String query = "SELECT Id_Meeting,Meeting_Subject,Meeting_Status ,COALESCE(NULLIF(Meeting_Date, ''), 'NOT SET') "
-                    + "AS Meeting_Date  "
-                    + "FROM meeting"
-                    + " where Soldier_Id = " + CurrentUser
-                    +" AND Meeting_Status IN('Pending Date_NotSet','Pending Date_Set')";
-                     
-            PreparedStatement ps = connection.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Vector<String> day = new Vector<String>();
-                day.add(rs.getString("Id_Meeting"));
-                day.add(rs.getString("Meeting_Subject"));
-                day.add(rs.getString("Meeting_Status"));
-                day.add(rs.getString("Meeting_Date"));
-                chk.add(day);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return chk;
-    }
-    public Vector<Vector<String>> meetings_history(Connection connection, String CurrentUser) throws SQLException {
-//
-        Vector<Vector<String>> chk = new Vector<Vector<String>>();
-
-        try {
-            String query = "SELECT Id_Meeting , Meeting_Subject , Meeting_Status , Meeting_Date , Meeting_Result "
-                    + "FROM meeting "
-                    + "WHERE Meeting_Result <> '' "
-                    + " AND Soldier_Id = " + CurrentUser;
-//               
-            PreparedStatement ps = connection.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Vector<String> day = new Vector<String>();
-                day.add(rs.getString("Id_Meeting"));
-                day.add(rs.getString("Meeting_Subject"));
-                day.add(rs.getString("Meeting_Status"));
-                day.add(rs.getString("Meeting_Date"));
-                day.add(rs.getString("Meeting_Result"));
-                chk.add(day);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return chk;
-    }
     public Vector<Object> ViewProfile(Connection connection, String CurrentUser) throws SQLException {
         Vector<Object> prof = new Vector<>();
 
@@ -302,68 +154,99 @@ public class UserHandler {
         }
         return chk;
     }
-    public Vector<Vector<String>> Secretary_meeting(Connection connection, String CurrentUser) throws SQLException {
-//
-        Vector<Vector<String>> chk = new Vector<Vector<String>>();
-//        
+    
+    
+    
+    //notsorted
+    public Vector<Vector<String>> getSchedule(Connection connection, String CurrentUser) throws SQLException {
+        Vector<Vector<String>> sch = new Vector<Vector<String>>();
 
         try {
-            String query = "SELECT Id_Meeting,Soldier_id,Meeting_Subject,Meeting_Status ,COALESCE(NULLIF(Meeting_Date, ''), 'NOT SET') "
-                    + "AS Meeting_Date  "
-                    + " FROM meeting "
-                    + " WHERE Meeting_Status <> 'Accomplished'"
-                    + " AND Meeting_Status <> 'canceled'";
+            String query = "SELECT Attendance_flag , Full_Date "
+                    + "FROM workdays w , calender c "
+                    + " where w.Calender_Id = c.Calender_Id  "
+                    + " and w.Soldier_Id = " + CurrentUser
+                    + " ORDER BY Full_Date DESC";
 //               
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 Vector<String> day = new Vector<String>();
-                day.add(rs.getString("Id_Meeting"));
-                day.add(rs.getString("Soldier_id"));
-                day.add(rs.getString("Meeting_Subject"));
-                day.add(rs.getString("Meeting_Status"));
-                day.add(rs.getString("Meeting_Date"));
-                chk.add(day);
+                day.add(rs.getString("Attendance_flag"));
+                day.add(rs.getString("Full_Date"));
+                sch.add(day);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return chk;
+        return sch;
     }
-    
-    public Vector<Vector<String>> check_task(Connection connection, String CurrentUser) throws SQLException {
-        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+    public HashMap<String, Vector<Vector<String>>> getTask(Connection connection, String CurrentUser) throws SQLException {
+//        Vector<String> tasks = new Vector<String>();
+        HashMap<String, Vector<Vector<String>>> tasks = new HashMap<>();
+        try {
+            String query = "SELECT Date_Assigned ,Task_duration,Description,Reference "
+                    + "FROM assigned_task  a, task t "
+                    + " WHERE a.Task_Id = t.Task_Id  "
+                    + " AND   a.Soldier_Id = " + CurrentUser
+                    + " ORDER BY Date_Assigned DESC ";
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            String FULL_DATE;
+
+            while (rs.next()) {
+                Vector<Vector<String>> dataAll = new Vector<>();
+                Vector<String> task = new Vector<>();
+                task.add(rs.getString("Task_duration"));
+                task.add(rs.getString("Description"));
+                task.add(rs.getString("Reference"));
+                FULL_DATE = rs.getString("Date_Assigned");
+                FULL_DATE = FULL_DATE.replace("-", "");
+//               
+                dataAll.add(task);
+                if (tasks.containsKey(FULL_DATE)) {
+                    dataAll = tasks.get(FULL_DATE);
+                    dataAll.add(task);
+                    tasks.put(FULL_DATE, dataAll);
+                } else {
+                    tasks.put(FULL_DATE, dataAll);
+
+                }
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tasks;
+    }
+    public ArrayList<String> dailyTasks(Connection connection, String CurrentUser) throws SQLException {
+        ArrayList<String> dailyTask = new ArrayList<>();
 
         try {
-            String query = "SELECT Assignement_id,Task_Id,Status,Reference,report,highlights,`Date_Assigned`\n" +
-"                   \n" +
-"                   FROM assigned_task\n" +
-"                   where Soldier_Id =" +CurrentUser+
-"                     AND  Date_Assigned = CURDATE() " +
-"                     AND Status IN('unfinished')";
-                     
+            String query = "SELECT Description,Reference "
+                    + "FROM assigned_task  a, task t "
+                    + " WHERE a.Task_Id = t.Task_Id  "
+                    + " AND   a.Soldier_Id = " + CurrentUser
+                    + " AND  Date_Assigned = CURDATE() ";
+//               
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Vector<String> day = new Vector<String>();
-                day.add(rs.getString("Assignement_id"));
-                day.add(rs.getString("Task_Id"));
-                day.add(rs.getString("Status"));
-                day.add(rs.getString("Reference"));
-                day.add(rs.getString("report"));
-                day.add(rs.getString("highlights"));
-                day.add(rs.getString("Date_Assigned"));
-                chk.add(day);
-            }
+
+                dailyTask.add(rs.getString("Description") + ";" + rs.getString("Reference"));
+
+            } 
 
         } catch (SQLException ex) {
-            System.out.println("test test test :"+ex);
             Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return chk;
+        return dailyTask;
     }
     public Vector<Vector<String>> search(Connection connection, String CurrentUser) throws SQLException {
 //
@@ -467,7 +350,7 @@ public class UserHandler {
     } 
 
     
-
+//task methods
  public Vector<Vector<String>> tasksearchbyaid(Connection connection, String aid) throws SQLException {
 //
         Vector<Vector<String>> chk = new Vector<Vector<String>>();
@@ -664,8 +547,59 @@ try {
       
         
  }
+ public Vector<Vector<String>> checkowndailytask(Connection connection, String CurrentUser) throws SQLException {
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+        try {
+            String query = "SELECT Assignement_id,Task_Id,Status,Reference,report,highlights,`Date_Assigned`\n" +
+"                   \n" +
+"                   FROM assigned_task\n" +
+"                   where Soldier_Id =" +CurrentUser+
+"                     AND  Date_Assigned = CURDATE() " +
+"                     AND Status IN('unfinished')";
+                     
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Assignement_id"));
+                day.add(rs.getString("Task_Id"));
+                day.add(rs.getString("Status"));
+                day.add(rs.getString("Reference"));
+                day.add(rs.getString("report"));
+                day.add(rs.getString("highlights"));
+                day.add(rs.getString("Date_Assigned"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("test test test :"+ex);
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
+public void update_report(Vector<String> v, Connection con, String username) throws SQLException {
+   try {
+            String query = "UPDATE assigned_task SET report = ? WHERE Assignement_Id = ? "  ;
+                    
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setString(1, v.get(5));
+            preparedStmt.setString(2, v.get(0));
+            
+            // execute the preparedstatement
+            preparedStmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Updated");
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
 
+ //meeting methods
 public void update_meeting_Date(Vector<String> v, Connection con, String username) throws SQLException {
    try {
             String query = "UPDATE meeting SET Meeting_Date = ? WHERE Id_Meeting = ? "  ;
@@ -734,26 +668,26 @@ public void request_meeting(Connection connection, String CurrentUser, String re
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, "");
             preparedStmt.setString(2, request);
-            preparedStmt.setString(3, " ");
-            preparedStmt.setString(4, "Pending Date_NotSet");
+            preparedStmt.setString(3, "");
+            preparedStmt.setString(4, "Pending date not set");
             preparedStmt.setString(5, CurrentUser);
 
             // execute the preparedstatement
             preparedStmt.execute();
-
+JOptionPane.showMessageDialog(null, "Request sent");
         } catch (SQLException ex) {
             Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-public Vector<Vector<String>> meetings_historyid(Connection connection, String Currentid) throws SQLException {
+public Vector<Vector<String>> meetings_historymeetingid(Connection connection, String Currentid) throws SQLException {
 //
         Vector<Vector<String>> chk = new Vector<Vector<String>>();
 
         try {
-            String query = "SELECT Id_Meeting , Meeting_Subject , Meeting_Status , Meeting_Date , Meeting_Result "
+            String query = "SELECT Id_Meeting , Meeting_Subject , Meeting_Status , Meeting_Date , Meeting_Result, Soldier_Id "
                     + "FROM meeting "
                     + "WHERE "
-                    + " id_Meeting = " + Currentid;
+                    + " Id_Meeting = " + Currentid;
 //               
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
@@ -765,6 +699,7 @@ public Vector<Vector<String>> meetings_historyid(Connection connection, String C
                 day.add(rs.getString("Meeting_Status"));
                 day.add(rs.getString("Meeting_Date"));
                 day.add(rs.getString("Meeting_Result"));
+                day.add(rs.getString("Soldier_Id"));
                 chk.add(day);
             }
 
@@ -778,7 +713,7 @@ public Vector<Vector<String>> meetings_historyall(Connection connection) throws 
         Vector<Vector<String>> chk = new Vector<Vector<String>>();
 
         try {
-            String query = "SELECT Id_Meeting , Meeting_Subject , Meeting_Status , Meeting_Date , Meeting_Result "
+            String query = "SELECT Id_Meeting , Meeting_Subject , Meeting_Status , Meeting_Date , Meeting_Result ,Soldier_Id"
                     + "FROM meeting "
                     ;
 //               
@@ -792,6 +727,7 @@ public Vector<Vector<String>> meetings_historyall(Connection connection) throws 
                 day.add(rs.getString("Meeting_Status"));
                 day.add(rs.getString("Meeting_Date"));
                 day.add(rs.getString("Meeting_Result"));
+                day.add(rs.getString("Soldier_Id"));
                 chk.add(day);
             }
 
@@ -800,7 +736,151 @@ public Vector<Vector<String>> meetings_historyall(Connection connection) throws 
         }
         return chk;
     }
+public Vector<Vector<String>> showallpendingmeetings(Connection connection, String CurrentUser) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+//        
 
+        try {
+            String query = "SELECT Id_Meeting,Soldier_id,Meeting_Subject,Meeting_Status ,COALESCE(NULLIF(Meeting_Date, ''), 'NOT SET') "
+                    + "AS Meeting_Date  "
+                    + " FROM meeting "
+                    + " WHERE Meeting_Status <> 'Accomplished'"
+                    + " AND Meeting_Status <> 'canceled'";
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Id_Meeting"));
+                day.add(rs.getString("Soldier_id"));
+                day.add(rs.getString("Meeting_Subject"));
+                day.add(rs.getString("Meeting_Status"));
+                day.add(rs.getString("Meeting_Date"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
+public Vector<Vector<String>> checkownmeeting(Connection connection, String CurrentUser) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+        try {
+            String query = "SELECT Id_Meeting,Meeting_Subject,Meeting_Status ,COALESCE(NULLIF(Meeting_Date, ''), 'NOT SET') "
+                    + "AS Meeting_Date  "
+                    + "FROM meeting"
+                    + " where Soldier_Id = " + CurrentUser
+                    +" AND Meeting_Status IN('Pending date not set','Pending date set')";
+                     
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Id_Meeting"));
+                day.add(rs.getString("Meeting_Subject"));
+                day.add(rs.getString("Meeting_Status"));
+                day.add(rs.getString("Meeting_Date"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
+public Vector<Vector<String>> meetings_historystatus(Connection connection, String x) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+        try {
+            String query = "SELECT Id_Meeting , Meeting_Subject , Meeting_Status , Meeting_Date , Meeting_Result,Soldier_Id "
+                    + "FROM meeting "
+                    + "WHERE "
+                    + " Meeting_Status = " + x;
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Id_Meeting"));
+                day.add(rs.getString("Meeting_Subject"));
+                day.add(rs.getString("Meeting_Status"));
+                day.add(rs.getString("Meeting_Date"));
+                day.add(rs.getString("Meeting_Result"));
+                day.add(rs.getString("Soldier_Id"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
+public Vector<Vector<String>> meetingsearchbydate(Connection connection, String x) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+        try {
+            String query = "SELECT Id_Meeting , Meeting_Subject , Meeting_Status , Meeting_Date , Meeting_Result, Soldier_Id "
+                    + "FROM meeting "
+                    + "WHERE "
+                    + " Meeting_Date = '" + x+"'";
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Id_Meeting"));
+                day.add(rs.getString("Meeting_Subject"));
+                day.add(rs.getString("Meeting_Status"));
+                day.add(rs.getString("Meeting_Date"));
+                day.add(rs.getString("Meeting_Result"));
+                day.add(rs.getString("Soldier_Id"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
+public Vector<Vector<String>> meetings_historymilitaryid(Connection connection, String CurrentUser) throws SQLException {
+//
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+        try {
+            String query = "SELECT Id_Meeting , Meeting_Subject , Meeting_Status , Meeting_Date , Meeting_Result,Soldier_Id "
+                    + "FROM meeting "
+                    + "WHERE  "
+                    + " Soldier_Id = " + CurrentUser;
+//               
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Id_Meeting"));
+                day.add(rs.getString("Meeting_Subject"));
+                day.add(rs.getString("Meeting_Status"));
+                day.add(rs.getString("Meeting_Date"));
+                day.add(rs.getString("Meeting_Result"));
+                day.add(rs.getString("Soldier_Id"));
+                chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
 
 
 

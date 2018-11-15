@@ -46,10 +46,10 @@ Uhandler=new UserHandler();
         jTable2 = new javax.swing.JTable();
         aid = new javax.swing.JComboBox<>();
         mid = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
+        searchall = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        selectdate = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -139,14 +139,14 @@ Uhandler=new UserHandler();
         getContentPane().add(mid);
         mid.setBounds(410, 50, 170, 20);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/magnifier.png"))); // NOI18N
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        searchall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/magnifier.png"))); // NOI18N
+        searchall.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                searchallActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(790, 40, 50, 60);
+        getContentPane().add(searchall);
+        searchall.setBounds(790, 40, 50, 60);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Press to see all tasks");
@@ -158,14 +158,14 @@ Uhandler=new UserHandler();
         getContentPane().add(jLabel4);
         jLabel4.setBounds(420, 80, 140, 22);
 
-        jButton5.setText("Go to selected Date");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        selectdate.setText("Go to selected Date");
+        selectdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                selectdateActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5);
-        jButton5.setBounds(450, 110, 200, 23);
+        getContentPane().add(selectdate);
+        selectdate.setBounds(450, 110, 200, 23);
 
         jLabel5.setText("YYYY-MM_DD");
         getContentPane().add(jLabel5);
@@ -215,7 +215,7 @@ Uhandler=new UserHandler();
                            
     
     }//GEN-LAST:event_midItemStateChanged
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void searchallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchallActionPerformed
 try {
                     conn= DriverManager.getConnection(Settings.DBURL, Settings.DBUserName,Settings.DBPassword);}
             catch (SQLException ex) {
@@ -231,8 +231,8 @@ try {
             settaskTbl();}
         
 
-    }//GEN-LAST:event_jButton4ActionPerformed
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_searchallActionPerformed
+    private void selectdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectdateActionPerformed
 SimpleDateFormat df =new SimpleDateFormat("YYYY-MM-dd");
         result =df.format(date.getDate());
     
@@ -249,7 +249,7 @@ SimpleDateFormat df =new SimpleDateFormat("YYYY-MM-dd");
             finally {
             DbManager.CloseConnection();
             settaskTbl();}
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_selectdateActionPerformed
     private void addtaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addtaskActionPerformed
 DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Vector<String> v = new Vector<>();
@@ -371,8 +371,6 @@ DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
     private com.toedter.calendar.JDateChooser date;
     private javax.swing.JButton delete;
     private javax.swing.JButton edit;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -383,5 +381,7 @@ DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JComboBox<String> mid;
+    private javax.swing.JButton searchall;
+    private javax.swing.JButton selectdate;
     // End of variables declaration//GEN-END:variables
 }

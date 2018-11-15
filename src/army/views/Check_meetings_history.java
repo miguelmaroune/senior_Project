@@ -19,8 +19,7 @@ public class Check_meetings_history extends javax.swing.JFrame {
         User user = Uhandler.getCurrUser();
         Connection con = null;
         String username = user.getUsername();
-//        for testing 
-//        String username = "123456";
+
         try {
             if (con == null) {
                 con = DbManager.getConnection();
@@ -30,7 +29,7 @@ public class Check_meetings_history extends javax.swing.JFrame {
         }
 
         try {
-            meeting_his = Uhandler.meetings_history(con, username);
+            meeting_his = Uhandler.meetings_historymilitaryid(con, username);
         } catch (SQLException ex) {
             Logger.getLogger(Soldier_home.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -57,10 +56,10 @@ public class Check_meetings_history extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Meeting Id", "Subject", "Status", "Date", "Result"
+                "Meeting Id", "Subject", "Status", "Date", "Result", "Soldier Id"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -102,7 +101,8 @@ public void setMeetingTbl() {
             String Status = v.get(2);
             String Date = v.get(3);
             String Result = v.get(4);
-            model.addRow(new Object[]{Meeting_ID, Subject, Status, Date,Result});
+            String soldier_id = v.get(5);
+            model.addRow(new Object[]{Meeting_ID, Subject, Status, Date,Result,soldier_id});
         }
 
     }
