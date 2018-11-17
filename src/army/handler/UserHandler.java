@@ -597,7 +597,35 @@ public void update_report(Vector<String> v, Connection con, String username) thr
         }
 
     }
+public Vector<Vector<String>> tasksearchbyplatoon(Connection connection,String user) throws SQLException {
 
+        Vector<Vector<String>> chk = new Vector<Vector<String>>();
+
+        try {
+            String query = "SELECT * from assigned_task" ;
+          //and where platoonid =current platoonid
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+            Vector<String> day = new Vector<String>();
+                day.add(rs.getString("Assignement_id"));
+                day.add(rs.getString("Task_Id"));
+                day.add(rs.getString("Soldier_Id"));
+                day.add(rs.getString("Date_Assigned"));
+                day.add(rs.getString("Reference"));
+                day.add(rs.getString("Status"));
+                day.add(rs.getString("highlights"));
+                day.add(rs.getString("report"));
+            
+            chk.add(day);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return chk;
+    }
 
  //meeting methods
 public void update_meeting_Date(Vector<String> v, Connection con, String username) throws SQLException {

@@ -262,9 +262,6 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTable2FocusGained"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

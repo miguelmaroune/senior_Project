@@ -2,6 +2,12 @@ package army.views;
 
 
 import com.sun.glass.events.KeyEvent;
+import java.awt.print.PageFormat;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 public class Sanction_paper extends javax.swing.JFrame {
 
@@ -60,6 +66,8 @@ public class Sanction_paper extends javax.swing.JFrame {
         zouroufbox = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
         jTextField19 = new javax.swing.JTextField();
+        print = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
 
         setTitle("قانونية,عادلة,شخصية,رادعة,فورية");
         setResizable(false);
@@ -321,6 +329,19 @@ public class Sanction_paper extends javax.swing.JFrame {
         jPanel1.add(jTextField19);
         jTextField19.setBounds(714, 87, 183, 23);
 
+        print.setText("Print");
+        print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printActionPerformed(evt);
+            }
+        });
+        jPanel1.add(print);
+        print.setBounds(630, 420, 140, 23);
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/army/icons/Operational_Camouflage_Pattern_(OCP),_Scorpion_W2_swatch.jpg"))); // NOI18N
+        jPanel1.add(jLabel21);
+        jLabel21.setBounds(0, 0, 1070, 480);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -351,7 +372,6 @@ public class Sanction_paper extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_khedmeActionPerformed
-
     private void tekrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tekrarActionPerformed
         int x=tekrar.getSelectedIndex();
         
@@ -363,7 +383,6 @@ public class Sanction_paper extends javax.swing.JFrame {
         else{tekrarres.setText("100%");
         }}
     }//GEN-LAST:event_tekrarActionPerformed
-
     private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
       
        
@@ -457,22 +476,34 @@ public class Sanction_paper extends javax.swing.JFrame {
        
      
     }//GEN-LAST:event_calculateActionPerformed
-
     private void valueKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valueKeyTyped
 char c =evt.getKeyChar();
 if (!(Character.isDigit(c))||c==KeyEvent.VK_BACKSPACE ||c==KeyEvent.VK_DELETE){
     evt.consume();
     }        
     }//GEN-LAST:event_valueKeyTyped
-
-
-    public static void main(String args[]) {
-       
-                new Sanction_paper().setVisible(true);
-            
-        
+    private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
+ JFrame yourComponent = new JFrame();
+PrinterJob pjob = PrinterJob.getPrinterJob();
+PageFormat preformat = pjob.defaultPage();
+preformat.setOrientation(PageFormat.LANDSCAPE);
+PageFormat postformat = pjob.pageDialog(preformat);
+//If user does not hit cancel then print.
+if (preformat != postformat) {
+    //Set print component
+    pjob.setPrintable(new army.handler.Printer(yourComponent), postformat);
+    if (pjob.printDialog()) {
+        try {
+            pjob.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(Haras.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+}       
+    }//GEN-LAST:event_printActionPerformed
 
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton calculate;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -490,6 +521,7 @@ if (!(Character.isDigit(c))||c==KeyEvent.VK_BACKSPACE ||c==KeyEvent.VK_DELETE){
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -508,6 +540,7 @@ if (!(Character.isDigit(c))||c==KeyEvent.VK_BACKSPACE ||c==KeyEvent.VK_DELETE){
     private javax.swing.JTextField jTextField5;
     private javax.swing.JComboBox<String> khedme;
     private javax.swing.JLabel khedmeres;
+    private javax.swing.JButton print;
     private javax.swing.JComboBox<String> tekrar;
     private javax.swing.JLabel tekrarres;
     private javax.swing.JLabel total;

@@ -6,6 +6,8 @@ import army.calendar.CalendarPanelTest;
 import army.controller.DbManager;
 import army.handler.UserHandler;
 import army.model.User;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,9 +15,12 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
-
+import army.handler.Encrypt;
 
 public class Cl_homepage extends javax.swing.JFrame {
     private Vector<Vector<String>> tasks = new Vector<>();
@@ -354,7 +359,19 @@ try {
 new Tasks().setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        
+        try {
+            new Gui_encryption().setVisible(true);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Cl_homepage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(Cl_homepage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeyException ex) {
+            Logger.getLogger(Cl_homepage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BadPaddingException ex) {
+            Logger.getLogger(Cl_homepage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalBlockSizeException ex) {
+            Logger.getLogger(Cl_homepage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem11ActionPerformed
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
     new Sanction_paper().setVisible(true);
@@ -412,7 +429,7 @@ new   Haras().setVisible(true);    }//GEN-LAST:event_jMenuItem10ActionPerformed
         }
     }//GEN-LAST:event_setstatusActionPerformed
     private void setdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setdateActionPerformed
-        // TODO add your handling code here:
+       
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         Vector<String> v = new Vector<>();
         v = (Vector<String>) model.getDataVector().elementAt(jTable2.getSelectedRow());

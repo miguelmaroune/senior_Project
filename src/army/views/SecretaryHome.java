@@ -46,7 +46,7 @@ public class SecretaryHome extends javax.swing.JFrame {
         } finally {
             DbManager.CloseConnection();
         }
-        initComponents();
+        initComponents();settaskTbl();
     }
 
     @SuppressWarnings("unchecked")
@@ -85,7 +85,6 @@ public class SecretaryHome extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
 
@@ -211,6 +210,11 @@ public class SecretaryHome extends javax.swing.JFrame {
         jButton6.setBounds(240, 340, 100, 23);
 
         jButton7.setText("Add task report");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton7);
         jButton7.setBounds(460, 160, 150, 23);
 
@@ -298,9 +302,6 @@ public class SecretaryHome extends javax.swing.JFrame {
         jMenuItem7.setText("Tarashi7");
         jMenu4.add(jMenuItem7);
 
-        jMenuItem8.setText("Awsime");
-        jMenu4.add(jMenuItem8);
-
         jMenuBar1.add(jMenu4);
 
         jMenu5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -387,6 +388,27 @@ public class SecretaryHome extends javax.swing.JFrame {
         new SecretaryHome().setVisible(true);
 
     }//GEN-LAST:event_refreshActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+ DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        Vector<String> v = new Vector<>();
+        v = (Vector<String>) model.getDataVector().elementAt(jTable3.getSelectedRow());
+        try {
+            if (con == null) {
+                con = DbManager.getConnection();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            Uhandler.update_report(v, con, username);
+        } catch (SQLException ex) {
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DbManager.CloseConnection();
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
     public void setMeetingTbl() {
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setRowCount(0);
@@ -441,7 +463,6 @@ public class SecretaryHome extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;

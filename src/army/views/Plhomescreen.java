@@ -9,43 +9,105 @@ import army.model.User;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 
 public class Plhomescreen extends javax.swing.JFrame {
 
-      ArrayList<String> DailyTasks = new ArrayList<>();
+   private Vector<Vector<String>> tasks = new Vector<>();
+    private Vector<Vector<String>> meetings = new Vector<>();
+    private UserHandler Uhandler;
+    private User user;
+    private String username;
+    private Connection con;
     
     public Plhomescreen() {
         
-        UserHandler Uhandler = new UserHandler();
-        User user = Uhandler.getCurrUser();
-        String username = user.getUsername();
-        Connection con = null;
-       
-        
-//        for testing 
-//        String username = "123456";
+         Uhandler = new UserHandler();
+         user = Uhandler.getCurrUser();
+         username = user.getUsername();
+         con = null;
+     
         try {
             if (con == null) {
                 con = DbManager.getConnection();
             }
-        } catch (Exception ex) {
-            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("adadadadad");
-        }
+        } catch (Exception ex) {            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
 
+            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);}
+    //    try {
+    //       meetings = Uhandler.meetings_historyplaton(con,username);
+      // } catch (SQLException ex) {
+        //   Logger.getLogger(Plhomescreen.class.getName()).log(Level.SEVERE, null, ex);
+      // }
+       
+         
+
+        initComponents();setMeetingTbl();
         try {
-            DailyTasks = Uhandler.dailyTasks(con, username);
-        } catch (SQLException ex) {
-            Logger.getLogger(CalendarPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            DbManager.CloseConnection();
-        }
-        initComponents();
+           tasks = Uhandler.tasksearchbyplatoon(con,username);
+       } catch (SQLException ex) {
+           Logger.getLogger(Plhomescreen.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        settaskTbl();
+        try {
+           tasks = Uhandler.tasksearchbyMid(con,username);
+       } catch (SQLException ex) {
+           Logger.getLogger(Plhomescreen.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        settaskownTbl();
+        
     }
+    public void setMeetingTbl() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        for (Vector<String> v : meetings) {
+// "Meeting Id","Military Id "Subject", "Status", "Date"       
+            String Meeting_ID = v.get(0);
+            String Military_ID = v.get(1);
+            String Subject = v.get(2);
+            String Status = v.get(3);
+            String Date = v.get(4);
 
+            model.addRow(new Object[]{Meeting_ID, Military_ID,Subject, Status, Date});
+        }
+
+    }
+    public  void settaskTbl() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (Vector<String> v : tasks) {
+// "ass Id", "task id", "Status", "Date",reference,task report ,task highlitght       
+            String Assignment_id = v.get(0);
+            String Task = v.get(1);
+            String Status = v.get(2);
+            String Date = v.get(6);
+            String Reference = v.get(3);
+            String Report = v.get(4);
+            String Highlights = v.get(5);
+            model.addRow(new Object[]{Assignment_id, Task, Status, Date, Reference, Report,Highlights});
+        }
+
+    }
+    public  void settaskownTbl() {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (Vector<String> v : tasks) {
+// "ass Id", "task id", "Status", "Date",reference,task report ,task highlitght       
+            String Assignment_id = v.get(0);
+            String Task = v.get(1);
+            String Status = v.get(2);
+            String Date = v.get(6);
+            String Reference = v.get(3);
+            String Report = v.get(4);
+            String Highlights = v.get(5);
+            model.addRow(new Object[]{Assignment_id, Task, Status, Date, Reference, Report,Highlights});
+        }
+
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -252,29 +314,21 @@ public class Plhomescreen extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
    new Request_meetingpl().setVisible(true);                                          
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
 new pl_meetinghistory().setVisible(true);     
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
 new CalendarPanelTest().setVisible(true); 
     }//GEN-LAST:event_jMenuItem5ActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
 new searchpl().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 new Listjouhouz().setVisible(true);        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
   
-   public static void main(String args[]) {
-     
-   new Plhomescreen().setVisible(true);
-            }
-
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

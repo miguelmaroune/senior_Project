@@ -188,11 +188,6 @@ public class LoginPage extends javax.swing.JFrame {
         tm.start();
     }
 
-//    public static void main(String args[]) {
-//                new LoginPage().setVisible(true);
-//                changecolor();
-//    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JLabel j1;
     private javax.swing.JLabel jLabel2;

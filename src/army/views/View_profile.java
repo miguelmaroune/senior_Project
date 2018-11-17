@@ -19,7 +19,7 @@ public class View_profile extends javax.swing.JFrame {
     private Vector<Vector<String>> sanctions = new Vector<>();
 
     public View_profile() {
-      //  ImageIcon img ;
+      
         UserHandler Uhandler = new UserHandler();
         User user = Uhandler.getCurrUser();
         Connection con = null;
@@ -45,6 +45,72 @@ public class View_profile extends javax.swing.JFrame {
         }
         initComponents();
     }
+    
+    public void setGenInfo() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+         
+//        SELECT Soldier_Id , Platoon_Id , First_Name , Last_Name , "
+//                    + "  Phone_Number , Rank , Position , Available ,DOB ,"
+//                    + "  Blood_Type
+//general_info.get(0);
+        if (general_info.size() > 0) {
+            model.addRow(new Object[]{general_info.get(0), general_info.get(1), general_info.get(2), general_info.get(3),
+                general_info.get(5), general_info.get(6), general_info.get(7), general_info.get(8), general_info.get(4), general_info.get(9)});
+        } else {
+            model.setRowCount(0);
+        }
+    }
+    public void setTraining() {
+        DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+        model.setRowCount(0);
+        training.forEach((v) -> {
+            // description , reference , start , end , location , Evaluation       
+            String description = v.get(0);
+            String reference = v.get(1);
+            String start = v.get(2);
+            String end = v.get(3);
+            String location = v.get(4);
+            String Evaluation = v.get(5);
+
+            model.addRow(new Object[]{description, reference, start, end, location, Evaluation});
+        });
+
+    }
+    public void setRest() {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        rest.forEach((v) -> {
+            // Type_Rest , Reference_Rest , Start , End , Cause 
+            String Type_Rest = v.get(0);
+            String Reference_Rest = v.get(1);
+            String start = v.get(2);
+            String end = v.get(3);
+            String Cause = v.get(4);
+
+            model.addRow(new Object[]{Type_Rest, Reference_Rest, start, end, Cause});
+        });
+
+    }
+    public void setSanction() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        sanctions.forEach((v) -> {
+            // description , start , end , duration , executed , date_Commited , deduction , status
+            String description = v.get(0);
+            String reference = v.get(1);
+            String start = v.get(2);
+            String end = v.get(3);
+            String duration = v.get(4);
+            String executed = v.get(5);
+            String date_Commited = v.get(6);
+            String deduction = v.get(7);
+            String status = v.get(8);
+            model.addRow(new Object[]{description, reference, start, end, duration, executed, date_Commited, deduction, status});
+        });
+
+    
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -118,11 +184,6 @@ public class View_profile extends javax.swing.JFrame {
                 "Sanction description", "Reference", "Start date", "End date", "Duration", "Executed", "Date of commitment", "Deduction", "Status"
             }
         ));
-        jTable2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTable2FocusGained(evt);
-            }
-        });
         jScrollPane2.setViewportView(jTable2);
         setSanction();
 
@@ -170,18 +231,6 @@ public class View_profile extends javax.swing.JFrame {
         setBounds(0, 0, 1006, 682);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTable2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable2FocusGained
-    }//GEN-LAST:event_jTable2FocusGained
-
-//    public static void main(String args[]) {
-//
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new View_profile().setVisible(true);
-//            }
-//        });
-//    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -198,72 +247,4 @@ public class View_profile extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     // End of variables declaration//GEN-END:variables
-
-    public void setGenInfo() {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
-         
-//        SELECT Soldier_Id , Platoon_Id , First_Name , Last_Name , "
-//                    + "  Phone_Number , Rank , Position , Available ,DOB ,"
-//                    + "  Blood_Type
-//general_info.get(0);
-        if (general_info.size() > 0) {
-            model.addRow(new Object[]{general_info.get(0), general_info.get(1), general_info.get(2), general_info.get(3),
-                general_info.get(5), general_info.get(6), general_info.get(7), general_info.get(8), general_info.get(4), general_info.get(9)});
-        } else {
-            model.setRowCount(0);
-        }
-    }
-
-    public void setTraining() {
-        DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
-        model.setRowCount(0);
-        training.forEach((v) -> {
-            // description , reference , start , end , location , Evaluation       
-            String description = v.get(0);
-            String reference = v.get(1);
-            String start = v.get(2);
-            String end = v.get(3);
-            String location = v.get(4);
-            String Evaluation = v.get(5);
-
-            model.addRow(new Object[]{description, reference, start, end, location, Evaluation});
-        });
-
-    }
-
-    public void setRest() {
-        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
-        model.setRowCount(0);
-        rest.forEach((v) -> {
-            // Type_Rest , Reference_Rest , Start , End , Cause 
-            String Type_Rest = v.get(0);
-            String Reference_Rest = v.get(1);
-            String start = v.get(2);
-            String end = v.get(3);
-            String Cause = v.get(4);
-
-            model.addRow(new Object[]{Type_Rest, Reference_Rest, start, end, Cause});
-        });
-
-    }
-
-    public void setSanction() {
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        model.setRowCount(0);
-        sanctions.forEach((v) -> {
-            // description , start , end , duration , executed , date_Commited , deduction , status
-            String description = v.get(0);
-            String reference = v.get(1);
-            String start = v.get(2);
-            String end = v.get(3);
-            String duration = v.get(4);
-            String executed = v.get(5);
-            String date_Commited = v.get(6);
-            String deduction = v.get(7);
-            String status = v.get(8);
-            model.addRow(new Object[]{description, reference, start, end, duration, executed, date_Commited, deduction, status});
-        });
-
-    }
 }
